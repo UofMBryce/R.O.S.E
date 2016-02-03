@@ -1,2 +1,43 @@
 2/3/2016
 First Iter1 Meeting
+
+- Broke down User Stories to Developer Tasks 
+User Stories 
+  - View Recipes
+    - connect to database
+    - create UI for interacting with recipe database
+    - close database
+    
+  - Modify Recipe Database
+    - connect to database
+    - create UI for editing selected recipe
+    - create UI for adding new recipe
+    - add functionality for deleting selected recipe 
+    - save modifications to database
+    - close database
+    
+  - View Shopping List
+    - open shopping list 
+    - display shopping list (UI)
+    - close shopping list
+    
+  - Edit Shopping List 
+    - open shopping list 
+    - display shopping list (UI)
+    - create interface for addding/deleting text 
+    - save modifications 
+    - close shopping list 
+
+- Robben suggested asking client for desired GUI details
+- Group discussed implementation details for various components of application 
+- Broke Iter1 into tasks 
+Tasks
+  - Create stub Database
+  - create Wiki for repository 
+  - create hierarchy diagram and define class structure 
+  - create GUI for Recipe Modification and Shopping LIst
+  - write backend code to support functionality 
+  
+Next Meeting: Friday, February 5th.
+To Do: assign Iter1 Tasks, define class structure, get everybody into Github repository 
+--------------------------------------------------------------------------------------------------------------------------------------
