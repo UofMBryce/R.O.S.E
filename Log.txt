@@ -113,6 +113,3 @@ Tasks
     - give Chad time to develop Tests
   
   
-  JiqingDai
-  
-  
