@@ -41,3 +41,78 @@ Tasks
 Next Meeting: Friday, February 5th.
 To Do: assign Iter1 Tasks, define class structure, get everybody into Github repository 
 --------------------------------------------------------------------------------------------------------------------------------------
+2/8/2016 
+Group Meeting 
+
+- Group now has access to GitHub Repository 
+
+Classes ->  Shopping List -> activity
+            Recipe Viewer -> initial activty 
+            Recipe Editor -> activity 
+              - recipe class -> object
+                - ingrediant class -> object 
+            Viewing A Recipe -> activity 
+            Menu class -> object
+            database converter class -> interface class 
+
+Activities 
+  - shows us list of recipes
+  - view a selected recipe 
+  - view shopping list
+  - edit shopping list 
+  - add a new recipe 
+  - edit an existing recipe 
+  
+  
+  Recipe Class
+    - Title 
+    - Rating 
+    - List of Ingredients 
+    - List of Instructions
+    - Meal Type Tag
+    - Meat Type Tag
+    - editable notes 
+    
+  Ingredient Class
+    - Quantity
+    - Measurement Type 
+    - Description 
+    
+  Menu Class
+    - Date 
+    - List of Meals 
+            
+Recipe Viewer and Recipe Editor display and edit recipe class 
+recipe class is used to create stub database 
+
+Tasks
+  - Create stub Database  2 Dayys 
+    - write the recipe class 
+    - populate an arraylist with recipes on startup 
+  - create Wiki for repository  2 Days 
+      - self explanitory 
+  - create hierarchy diagram and define class structure - 1 Day 
+      - draw structure 
+  - create GUI for Recipe Modification and Shopping LIst 3 Days
+      - see classes 
+  - write backend code to support functionality - 3 Days 
+  - write JUnit tests 2 Days 
+  
+  Task Assignment 
+  - Stub Database -> Bryce 
+  - Wiki & Hierarchy -> Robben 
+  - JUnit Testing -> Chad 
+  - GUI & Backend Code -> Jiqing and Kevin 
+  
+  Goals for Week: Get Android Project on GitHub; Ensure whole team is comfortable with GitHub and Adroid Development Studio 
+  
+  For Wednesday: Compare Iter0 and Iter1 project plans 
+  For Friday: Have class structure layed out 
+  
+  Aim to Have code done by Wednesday, February 17th, 2016
+    - give Chad time to develop Tests
+  
+  
+  JiqingDai
+  
+  
