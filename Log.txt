@@ -112,6 +112,7 @@ Tasks
   Aim to Have code done by Wednesday, February 17th, 2016
     - give Chad time to develop Tests
     
+--------------------------------------------------------------------------------------------------------------------------------------
     
 2/10/2016
 Group Meeting 
@@ -157,5 +158,6 @@ for friday: Examine Vision Statement and compare to current plans
 future plans: change recipe class to use ingredient objects, create ingredient class,
 add ingredients to shopping list by button, create list of favorite recipes, rate recipes  
 search recipes, create and view menus, ability to customize recipe based on # of people served 
--------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------
 
