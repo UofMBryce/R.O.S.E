@@ -111,5 +111,51 @@ Tasks
   
   Aim to Have code done by Wednesday, February 17th, 2016
     - give Chad time to develop Tests
+    
+    
+2/10/2016
+Group Meeting 
+
+Somebody needs to update log on Fridays meeting 
+
+Thoughts 
+- keep track of time spent on programming and update log 
+- 
   
+Want menu button to access three main features
+  - Recipes
+  - Shopping List 
+  - Menus 
+access functionality of each from main activity linked to menu 
+
+Classes that need defining so far:
+- one for each activity
+			- View Recipe 
+			- View Recipe Details 
+			- Modify Recipe 
+			- View Shopping List
+			- Edit List Shopping 
+			- View Menus 
+			- Edit Menus 
+			- Search Recipes 
+			- Favorite Recipes 
+		- recipe classes
+		- ingredient class
+		- database interaction class
+		- Business Object Class -> class which defines all "work" methods 	
+			- search methods
+		- Shopping List Class 
+		- Menu Class 
+
+Recipe Class is going to consist of String ArrayLists for ingredients and instructions 
+  - will change for next iteration to ingredient objects 
   
+As of now, focuses solely on daily menus for Iter2.
+  
+for friday: Examine Vision Statement and compare to current plans
+
+future plans: change recipe class to use ingredient objects, create ingredient class,
+add ingredients to shopping list by button, create list of favorite recipes, rate recipes  
+search recipes, create and view menus, ability to customize recipe based on # of people served 
+-------------------------------------------------------------------------------------------------
+
