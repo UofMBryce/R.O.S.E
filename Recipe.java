@@ -21,9 +21,11 @@ class Recipe {
 		this.name = name;
 		this.description = description;
 		this.ingredients = new ArrayList<String>();
-		this.ingredients = ingredients;
+		for(String p : ingredients)
+			this.ingredients.add(p);
 		this.directions = new ArrayList<String>();
-		this.directions = directions;
+		for(String p : directions)
+			this.directions.add(p);
 	}
 
 	public String getName() {
@@ -83,17 +85,24 @@ class Recipe {
 	}
 	
 	public void print() {
-		System.out.println("Name:    " + name);
-		System.out.println("Description:    " + description);
-		System.out.println("Ingredients \n----------");
-		System.out.println(ingredients.toString());
+		System.out.format("Name: \t\t\t %s", name + "\n");
+		System.out.format("Description: \t\t %s", description + "\n");
+		if(mainIngredient != null)
+			System.out.format("Main Ingredient: \t %s", mainIngredient + "\n");
+		if(mealType != null)
+			System.out.format("Meal Type: \t\t %s", mealType + "\n");
+		System.out.println("\nIngredients \n----------");
+		for(int x=0; x < ingredients.size(); x++)
+		{
+			System.out.println(ingredients.get(x).toString());
+		}
+		//System.out.println(ingredients.toString());
 		System.out.println();
-		System.out.println("Directions \n ----------");
-		System.out.println(directions.toString());
+		System.out.println("Directions \n----------");
+		for(int x=0; x < directions.size(); x++)
+		{
+			System.out.println((x+1) + ". " + directions.get(x).toString());
+		}
 		System.out.println();
-//		for(int x=0; x < ingredients.size(); x++)
-//		{
-//			
-//		}
 	}
 }
