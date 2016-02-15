@@ -160,4 +160,6 @@ add ingredients to shopping list by button, create list of favorite recipes, rat
 search recipes, create and view menus, ability to customize recipe based on # of people served 
 
 --------------------------------------------------------------------------------------------------------------------------------------
-
+2/11/2016 - Worked on Recipe Object Class (2 hours) - Bryce
+2/11/2016 - Worked on stub database (2 hours) - Bryce
+2/14/2016 - Worked on stub database (3 hours) - Bryce
