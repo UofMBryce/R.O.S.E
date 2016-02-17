@@ -163,3 +163,7 @@ search recipes, create and view menus, ability to customize recipe based on # of
 2/11/2016 - Worked on Recipe Object Class (2 hours) - Bryce
 2/11/2016 - Worked on stub database (2 hours) - Bryce
 2/14/2016 - Worked on stub database (3 hours) - Bryce
+2/15/2016 - Added to stub database/recipe classes and worked on initial activity (2 hours)
+2/15/2016 - Worked on shopping list activity and detail activity (2 hours)
+2/16/2016 - Connected all activities and linked them to stubDB (3 hours)
+2/16/2016 - Started setting up Edit activity and connected it to other activities (1 hour)
