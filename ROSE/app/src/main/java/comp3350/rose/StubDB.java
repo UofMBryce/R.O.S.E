@@ -89,7 +89,7 @@ public class StubDB {
         directions.add("pour milk into bowl");
 
         Recipe recipe5 = new Recipe("Cereal", "Just cereal. pretty basic", ingredients, directions);
-        recipe4.setMealType("Breakfast");
+        recipe5.setMealType("Breakfast");
 //-----------------------------------------------------------------------------------------------------------------------------------
         ingredients.clear();
         directions.clear();
@@ -110,8 +110,8 @@ public class StubDB {
 
         Recipe recipe6 = new Recipe("BBQ pulled pork", "delicous slow cooked pull pork in savory bbq sauce", ingredients, directions);
 
-        recipe5.setMainIngredient("Pork");
-        recipe5.setMealType("Supper");
+        recipe6.setMainIngredient("Pork");
+        recipe6.setMealType("Supper");
 //-----------------------------------------------------------------------------------------------------------------------------------
         ingredients.clear();
         directions.clear();
