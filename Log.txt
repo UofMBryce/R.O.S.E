@@ -169,3 +169,4 @@ search recipes, create and view menus, ability to customize recipe based on # of
 2/16/2016 - Started setting up Edit activity and connected it to other activities (1 hour) - Kev
 2/21/2016 - Added Edit exist recipe function (3 hours) - Jiqing
 2/22/2016 - Created/Added the 'Software Architecture' and 'Wiki' documentation (5 hours) - Robben
+2/22/2016 - Successful test of ROSE application on Nexus 7 (1 hour) - Robben
