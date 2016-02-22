@@ -170,3 +170,20 @@ search recipes, create and view menus, ability to customize recipe based on # of
 2/21/2016 - Added Edit exist recipe function (3 hours) - Jiqing
 2/22/2016 - Created/Added the 'Software Architecture' and 'Wiki' documentation (5 hours) - Robben
 2/22/2016 - Successful test of ROSE application on Nexus 7 (1 hour) - Robben
+--------------------------------------------------------------------------------------------------------------------------------------
+
+2/22/2016
+Iter1 Due today at 4:00 p.m.
+
+Group Meeting 
+- application works on nexus tablet and virtaul software 
+
+- proces/release/documentation is completed 
+- fucntionality for view, edit recipe and view shopping list is operational (as per original plan)
+- waiting to hear from Chad on status of unit tests
+
+- add recipe not currently implementd -> bumped to Iter2
+	- need to have database implemented to be able to add recipes 
+
+
+next tentative meeting date: Friday, February 27th, 2016 
