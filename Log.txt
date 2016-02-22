@@ -167,3 +167,4 @@ search recipes, create and view menus, ability to customize recipe based on # of
 2/15/2016 - Worked on shopping list activity and detail activity (2 hours)
 2/16/2016 - Connected all activities and linked them to stubDB (3 hours)
 2/16/2016 - Started setting up Edit activity and connected it to other activities (1 hour)
+2/21/2016 - Added Edit exist recipe function (3 hours) - Jiqing
