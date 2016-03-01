@@ -188,3 +188,27 @@ Group Meeting
 
 
 next tentative meeting date: Friday, February 27th, 2016 
+
+--------------------------------------------------------------------------------------------------------------------------------------
+2/29/2016 
+Group Meeting 
+
+- short meeting today 
+
+Wednesday 
+- planning meeting 
+- Go over big user stories for Iter2	
+	- break down into detailed user stories	
+		- break down further to developer tasks
+	- provide time completion estimates 
+	
+For Iteration 2
+- New User Stories (with GUI)
+- Unit testing for Stories 
+- Database functionality 
+
+Touch Base with client this week on progress 
+
+For Wednesday: 
+- Read Iteration 2 Document
+- Have rough idea of detailed user tasks to share with group 
