@@ -257,9 +257,9 @@ Total Estimated Work Time: 26 Days.
 Current Total Available Work Time: 60 Days.
  -> Allowing time off for Comp 3430 Midterm as most group members are enrolled in said class
  
-Meeting with Client either friday or monday (depending on availability)
-	- Robben has confirmed monday works 
-
+Meeting with Client Monday
+	- get feedback on version 1.0
+	
 Idea: Be able to provide rating from view recipe activity view 
 	- will run past client (possible Iter3 function?)
 
