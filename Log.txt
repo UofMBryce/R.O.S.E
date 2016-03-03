@@ -212,3 +212,61 @@ Touch Base with client this week on progress
 For Wednesday: 
 - Read Iteration 2 Document
 - Have rough idea of detailed user tasks to share with group 
+
+3/2/2016
+Group Meeting 
+	- All members in attendance 
+
+Laid out detailed user stories and developer tasks for iteration 2
+	- with preliminary estimations for completion time 
+	
+Iteration 2 Big User Stories (per Planning Document)
+	- Add/Delete Recipe from Database
+	- Sort Recipes
+	- Rate Recipes
+	- Modify Shopping List 
+	
+Detailed User Stories 
+	- Add a recipe to the database - 2 days 
+	- Delete recipe from the database - 2 days
+	- Sort recipes alphabetically - 2 days
+	- Sort recipes by rating - 2 days
+	- Sort recipes by meal type - 2 days
+	- Sort recipes by main ingredient - 2 days 
+	- Add rating to recipe - 1 day
+	- Write text to shopping list - 1 day
+	- Edit current text in shopping list - 1 day
+	
+Developer Tasks
+	- create graphical interface for adding recipe - 1 day
+	- create graphical interface for deleting recipe - 1 day
+	- create graphical interface for sorting recipes - 4 days 
+	- Add "edit rating" field to edit function - 1 day 
+	- create graphical interface for modifying shopping list - 1 day 
+	- write code to implement add recipe funciton - 1 day
+	- write code to implement delete function - 1 day 
+	- write code to implement all sorting methods - 4 days
+	- write code to implement rating function - 1 day
+	- write code to implement add/edit shopping list function - 1 day
+	
+Other Tasks:
+	- More unit tests and integration tests - 3 days
+	- implement full database - 7 days
+	
+Total Estimated Work Time: 26 Days.
+Current Total Available Work Time: 60 Days.
+ -> Allowing time off for Comp 3430 Midterm as most group members are enrolled in said class
+ 
+Meeting with Client either friday or monday (depending on availability)
+	- Robben has confirmed monday works 
+
+Idea: Be able to provide rating from view recipe activity view 
+	- will run past client (possible Iter3 function?)
+
+Leave recipes as text based strings for now 
+	- in order to focus solely on getting database implemented this iteration 
+
+For Friday: Each team member is to decide which developer tasks are of interest
+	- will divide up tasks during fridays meeting 
+	
+Next Meeting: Friday, March 4th, 2016 
