@@ -242,7 +242,7 @@ Developer Tasks
 	- create graphical interface for deleting recipe - 1 day
 	- create graphical interface for sorting recipes - 4 days 
 	- Add "edit rating" field to edit function - 1 day 
-	- create graphical interface for modifying shopping list - 1 day 
+	- create graphical interface for modifying shopping list - 1 day
 	- write code to implement add recipe funciton - 1 day
 	- write code to implement delete function - 1 day 
 	- write code to implement all sorting methods - 4 days
@@ -270,3 +270,28 @@ For Friday: Each team member is to decide which developer tasks are of interest
 	- will divide up tasks during fridays meeting 
 	
 Next Meeting: Friday, March 4th, 2016 
+--------------------------------------------------------------------------------------------------------------------------------------
+3/4/2016
+Group Meeting 
+	- Bryce, Jiqing, Chad, Kevin in attendance 
+	
+Main focus for today: Assign developer tasks 
+
+Also add Update Wiki to list of tasks for Iter2 
+
+Bryce 	- Database implementation 
+Chad 	- Testing 
+Jiqing 	- Graphical Interface for Shopping List
+	- Backend code for add/edit/delete item to list 
+Kevin 	- Graphical interface for sort functionality 
+	- Backend code for sort functionality 
+Robben  - Graphical Interface for Add and Delete Recipe 
+	- Backend code for Add and Delete Recipe 
+	- Add "rating" field to edit recipe function 
+	- write method to set rating for current recipe 
+	
+	
+For Monday: Client meeting 
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
