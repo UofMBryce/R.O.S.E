@@ -293,5 +293,32 @@ Robben  - Graphical Interface for Add and Delete Recipe
 	
 For Monday: Client meeting 
 --------------------------------------------------------------------------------------------------------------------------------------
+3/7/2016
+Group Meeting
+	- All members in attendence 
+
+Client Meeting for feedback
+- Changes 
+	- adding subheadings to front page 
+	- Bold Recipe Name in view 
+	- seperate ingredients and instructions with spacing 
+	- Edit
+		- being able to edit by tapping on listview item 
+	- Add
+		- Titles for user imputs 
+	- minor UI fixes 
+		- make buttons bigger 
+	- Add Homepage 
+	- Red and Pink colour scheme maybe?
+	
+- meeting recorded 
+	
+- Make sure we split everything up into packages 
+
+- should have interface for database stuff up tonight 
+- full database by wednesday/early thursday 
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
 
 
