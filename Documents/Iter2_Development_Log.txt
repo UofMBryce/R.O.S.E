@@ -1,3 +1,4 @@
 3/3/2016 - 2 hours research (spike) - Bryce
 3/4/2016 - 3 hours research (spike) - Bryce
 3/5/2016 - 2 hours research (spike) - Bryce
+3/7/2016 - 4 hours modified stubDB, created Database Interface, and began organizing code into packages - Bryce
