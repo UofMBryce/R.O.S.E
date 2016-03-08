@@ -13,6 +13,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import comp3350.rose.model.Recipe;
+import comp3350.rose.Stub.StubDB;
+
 public class Edit extends AppCompatActivity {
     int recipePosition = 0;
     int editType = 0;
@@ -43,7 +46,7 @@ public class Edit extends AppCompatActivity {
         }
         else if(editType == 2){ //Modify Recipe
             recipePosition = getIntent().getIntExtra("recipePosition", 0);
-            Recipe recipeToModify = StubDB.getRecipes().get(recipePosition);
+            Recipe recipeToModify = StubDB.getList().get(recipePosition);
 
             ArrayList<String> recipeDetails = new ArrayList<>();
             recipeDetails.add(recipeToModify.getName());

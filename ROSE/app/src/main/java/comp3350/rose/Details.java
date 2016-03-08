@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import comp3350.rose.model.Recipe;
+import comp3350.rose.Stub.StubDB;
 import java.util.ArrayList;
 
 public class Details extends ListActivity {
@@ -18,7 +20,7 @@ public class Details extends ListActivity {
         setContentView(R.layout.activity_details);
 
         recipePosition = getIntent().getIntExtra("recipePosition", 0);
-        Recipe clickedRecipe = StubDB.getRecipes().get(recipePosition);
+        Recipe clickedRecipe = StubDB.getList().get(recipePosition);
         ArrayList<String> recipeDetails = new ArrayList<>();
         recipeDetails.add(clickedRecipe.getName());
         recipeDetails.add(clickedRecipe.getDescription());

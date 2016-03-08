@@ -9,6 +9,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import comp3350.rose.Stub.StubDB;
+
 public class ShoppingList extends ListActivity {
 
     @Override

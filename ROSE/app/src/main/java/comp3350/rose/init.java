@@ -9,6 +9,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import comp3350.rose.Stub.StubDB;
+import comp3350.rose.model.Recipe;
+
 public class init extends ListActivity {
 
     @Override
@@ -16,7 +19,7 @@ public class init extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init);
 
-        ArrayList<Recipe> recipes = StubDB.getRecipes();
+        ArrayList<Recipe> recipes = StubDB.getList();
         ArrayList<String> recipeDisplay = new ArrayList<>();
         for(int i=0; i<recipes.size(); i++) {
             recipeDisplay.add(recipes.get(i).getName());

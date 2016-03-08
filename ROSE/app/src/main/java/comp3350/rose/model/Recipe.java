@@ -1,9 +1,16 @@
-package comp3350.rose;
+package comp3350.rose.model;
+
+/**
+ * Created by Bryce on 3/7/2016.
+ */
 
 import java.util.ArrayList;
 
-class Recipe {
+public class Recipe {
 
+    static int rID_Counter = 1;
+
+    private int rID;
     private String name;
     private String mealType;
     private String mainIngredient;
@@ -14,8 +21,17 @@ class Recipe {
     private int cooktime;
     private String notes;
 
+    public Recipe()
+    { //Null Constructor
+        rID = rID_Counter++;
+        ingredients = null;
+        directions = null;
+        name = null;
+        description = null;
+    }
+
     public Recipe(String name, String description, ArrayList<String> ingredients, ArrayList<String> directions)
-    {
+    {//Basic Constructor
         this.name = name;
         this.description = description;
         this.ingredients = new ArrayList<String>();
@@ -24,7 +40,38 @@ class Recipe {
         this.directions = new ArrayList<String>();
         for(String p : directions)
             this.directions.add(p);
+        rID = rID_Counter++;
     }
+
+    public Recipe(String name, String description, ArrayList<String> ingredients, ArrayList<String> directions, String mainIngredient)
+    {//Constructor with mainIngredient
+        this.name = name;
+        this.description = description;
+        this.mainIngredient = mainIngredient;
+        this.ingredients = new ArrayList<String>();
+        for(String p : ingredients)
+            this.ingredients.add(p);
+        this.directions = new ArrayList<String>();
+        for(String p : directions)
+            this.directions.add(p);
+        rID = rID_Counter++;
+    }
+
+    public Recipe(String name, String description, ArrayList<String> ingredients, ArrayList<String> directions, String mainIngredient, String mealType)
+    {//Full Constructor
+        this.name = name;
+        this.description = description;
+        this.mainIngredient = mainIngredient;
+        this.mealType = mealType;
+        this.ingredients = new ArrayList<String>();
+        for(String p : ingredients)
+            this.ingredients.add(p);
+        this.directions = new ArrayList<String>();
+        for(String p : directions)
+            this.directions.add(p);
+        rID = rID_Counter++;
+    }
+
 
     public String getName() {
         return name;
@@ -96,6 +143,22 @@ class Recipe {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public int getrID() { return rID; }
+
+    public boolean equals(Recipe compareRecipe)
+    {
+        boolean result = false;
+        if(this.getrID() == compareRecipe.getrID())
+            result = true;
+        return result;
+    }
+
+
+    // TODO: Write Method
+    public void copy(Recipe newRecipe){
+
     }
 
     public void print() {

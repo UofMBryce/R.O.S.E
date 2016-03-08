@@ -1,13 +1,26 @@
-package comp3350.rose;
+package comp3350.rose.Stub;
+
+/**
+ * Created by Bryce on 3/7/2016.
+ */
 
 import java.util.ArrayList;
 
-public class StubDB {
+import comp3350.rose.Database.DBInterface;
+import comp3350.rose.model.Recipe;
 
-    public static ArrayList<Recipe> getRecipes(){
-        ArrayList<Recipe> recipes = new ArrayList<>();
+public class StubDB implements DBInterface{
+
+    static ArrayList<Recipe> recipes = new ArrayList<>();
+
+    public StubDB() {
+        initializeRecipes();
+    }
+
+    public void initializeRecipes(){
         ArrayList<String> ingredients = new ArrayList<>();
         ArrayList<String> directions = new ArrayList<>();
+
 
 //-----------------------------------------------------------------------------------------------------------------------------------
         ingredients.add("1 Cup Spaghetti");
@@ -234,21 +247,62 @@ public class StubDB {
         recipe12.setMainIngredient("Chicken");
         recipe12.setMealType("Supper");
 //--------------------------------------------------------------------------------------------------------------------------------------
+        this.addRecipe(recipe1);
+        this.addRecipe(recipe2);
+        this.addRecipe(recipe3);
+        this.addRecipe(recipe4);
+        this.addRecipe(recipe5);
+        this.addRecipe(recipe6);
+        this.addRecipe(recipe7);
+        this.addRecipe(recipe8);
+        this.addRecipe(recipe9);
+        this.addRecipe(recipe10);
+        this.addRecipe(recipe11);
+        this.addRecipe(recipe12);
+    }
 
-        recipes.add(recipe1);
-        recipes.add(recipe2);
-        recipes.add(recipe3);
-        recipes.add(recipe4);
-        recipes.add(recipe5);
-        recipes.add(recipe6);
-        recipes.add(recipe7);
-        recipes.add(recipe8);
-        recipes.add(recipe9);
-        recipes.add(recipe10);
-        recipes.add(recipe11);
-        recipes.add(recipe12);
+    public void addRecipe(Recipe recipe){
+        recipes.add(recipe);
+        String result;
+        result = "Add Completed";
+    }
 
+    public void editRecipe(Recipe newRecipe){
+        int x;
+        boolean flag = false;
+        String result;
 
+        for(x = 0; x < recipes.size(); x++)
+        {
+            if(recipes.get(x).equals(newRecipe)) {
+                recipes.set(x, newRecipe);
+                flag = true;
+            }
+        }
+        if(flag)
+            result = "Update Completed";
+        else
+            result = "Update Failed";
+    }
+
+    public void deleteRecipe(Recipe recipe){
+        int x;
+        boolean flag = false;
+        String result;
+
+        for(x = 0; x < recipes.size(); x++)
+        {
+            if(recipes.get(x).equals(recipe)) {
+                recipes.remove(x);
+                flag = true;
+            }
+        }
+        if(flag)
+            result = "Deletion Completed";
+        else
+            result = "Deletion Failed";
+    }
+    public static ArrayList<Recipe> getList() {
         return recipes;
     }
 
