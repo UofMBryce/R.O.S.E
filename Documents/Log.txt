@@ -319,6 +319,27 @@ Client Meeting for feedback
 - full database by wednesday/early thursday 
 
 --------------------------------------------------------------------------------------------------------------------------------------
+3/9/2016
+- Group Meeting 
+	Bryce, Chad, Kevin in attendance 
+	
+Database interface and stub database are finished and uploaded to repository
+- Full database functionality should be finished by tonight 
+	
+Shopping list code needs to be moved from stub database to own file 
+	
+Want to have all functionality implemented by friday -> Give Chad the weekend for testing 
+
+Bryce submittd issues for non-assigned work that should be done before handin. if anybody has free time please claim an issue
+
+Next Meeting: Friday
+	- Make sure shoppping list code is seperate
+	- get status updates on team members progress
+	- remind everybody to log work times 
+	- make sure everybody is done by Friday night so Chad can start unit testing 
+	
+--------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
