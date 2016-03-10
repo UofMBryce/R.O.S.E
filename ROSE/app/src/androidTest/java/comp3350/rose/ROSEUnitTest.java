@@ -8,10 +8,12 @@ import android.widget.ListView;
 
 import org.junit.Test;
 
+import comp3350.rose.model.Recipe;
+import comp3350.rose.Stub.StubDB;
+
 import java.util.ArrayList;
 
 import dalvik.annotation.TestTargetClass;
-
 import static org.junit.Assert.*;
 
 /**
@@ -20,7 +22,7 @@ import static org.junit.Assert.*;
 public class ROSEUnitTest {
     @BeforeClass
     public static void setUpClass() throws Exception {
-        ArrayList<Recipe> temp_recipes = StubDB.getRecipes();
+        ArrayList<Recipe> temp_recipes = StubDB.getList();
         ArrayList<String> temp_recipeDisplay = new ArrayList<>();
 
         int temp_recipePosition = 0;

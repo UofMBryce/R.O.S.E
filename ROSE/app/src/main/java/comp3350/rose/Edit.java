@@ -2,6 +2,7 @@ package comp3350.rose;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,9 +14,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import comp3350.rose.Database.RecipeDatabase;
+import comp3350.rose.Stub.StubDB;
+import comp3350.rose.model.Recipe;
+import comp3350.rose.Business.MyApplication;
+import comp3350.rose.Controller.DBInterface;
+
 public class Edit extends AppCompatActivity {
     int recipePosition = 0;
     int editType = 0;
+    int rID = 0;
 
     Recipe recipeToModify;
     String name = "";
@@ -27,10 +35,13 @@ public class Edit extends AppCompatActivity {
     int ingredSID = 0, instruSID = 0;
     String input = "";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        //Get Database in order to acess the arraylist
+        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
 
         int editType = getIntent().getIntExtra("editType", 0);
         //editType == 1  will be add recipe
@@ -43,8 +54,8 @@ public class Edit extends AppCompatActivity {
         }
         else if(editType == 2){ //Modify Recipe
             recipePosition = getIntent().getIntExtra("recipePosition", 0);
-            Recipe recipeToModify = StubDB.getRecipes().get(recipePosition);
-
+            Recipe recipeToModify = repository.getList().get(recipePosition);
+            rID = recipeToModify.getrID();
             ArrayList<String> recipeDetails = new ArrayList<>();
             recipeDetails.add(recipeToModify.getName());
             recipeDetails.add(recipeToModify.getDescription());
@@ -139,8 +150,17 @@ public class Edit extends AppCompatActivity {
                 }
             }
         }
-        recipeToModify = new Recipe(name, description, ingredients, instructions);
-        // TODO: update to database
+        //get Database object to perform update method
+        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
+
+        //TODO Fix This
+        //recipeToModify just creates a new recipe object with the same variables. For instance
+        //I tried to edit the name and when I check the name variable here it hasn't been updated to
+        //what I input
+        recipeToModify = new Recipe(rID, name, description, ingredients, instructions);
+        repository.editRecipe(recipeToModify);
         Toast.makeText(getApplicationContext(), "Update to database", Toast.LENGTH_LONG).show();
+        finish();
     }
+
 }
