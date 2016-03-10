@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import comp3350.rose.Database.RecipeDatabase;
 import comp3350.rose.Stub.StubDB;
 import comp3350.rose.model.Recipe;
+import comp3350.rose.Business.MyApplication;
 import comp3350.rose.Controller.DBInterface;
 
 public class Edit extends AppCompatActivity {
@@ -34,13 +35,13 @@ public class Edit extends AppCompatActivity {
     int ingredSID = 0, instruSID = 0;
     String input = "";
 
-   // DBInterface repository = RecipeDatabase.getInstance(this);
-    DBInterface repository = StubDB.getInstance(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
+        //Get Database in order to acess the arraylist
+        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
 
         int editType = getIntent().getIntExtra("editType", 0);
         //editType == 1  will be add recipe
@@ -149,10 +150,15 @@ public class Edit extends AppCompatActivity {
                 }
             }
         }
-        Log.d("INFO", "Name passed to edit function: " + name);
+        //get Database object to perform update method
+        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
+
+        //TODO Fix This
+        //recipeToModify just creates a new recipe object with the same variables. For instance
+        //I tried to edit the name and when I check the name variable here it hasn't been updated to
+        //what I input
         recipeToModify = new Recipe(rID, name, description, ingredients, instructions);
         repository.editRecipe(recipeToModify);
-        // TODO: update to database
         Toast.makeText(getApplicationContext(), "Update to database", Toast.LENGTH_LONG).show();
         finish();
     }

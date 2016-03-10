@@ -22,6 +22,7 @@ public class RecipeDatabase extends Activity implements DBInterface {
     private static RecipeDatabase sInstance;
     private static Context sContext;
 
+    //Makes it singleton
     public static synchronized RecipeDatabase getInstance(Context context){
         if(sInstance == null){
             sInstance = new RecipeDatabase(context.getApplicationContext());
@@ -41,7 +42,6 @@ public class RecipeDatabase extends Activity implements DBInterface {
     {
         String ingredients = recipe.ingredientString();
         String directions = recipe.directionString();
-
 
         SQLiteDatabase db = Helper.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -80,10 +80,7 @@ public class RecipeDatabase extends Activity implements DBInterface {
         values.put(Recipe.KEY_notes, recipe.getNotes());
         values.put(Recipe.KEY_rating, recipe.getRating());
         values.put(Recipe.KEY_cooktime, recipe.getCooktime());
-        Log.d("INFO", "Editing Recipe Number " + recipe.getrID());
-        Log.d("INFO", "New Recipe Name: " + recipe.getName());
         int x = db.update(Recipe.TABLE, values, Recipe.KEY_rID + " = ?", new String[]{String.valueOf(recipe.getrID())});
-        Log.d("INFO", "Result = " + x);
         db.close();
     }
 
@@ -97,7 +94,7 @@ public class RecipeDatabase extends Activity implements DBInterface {
     }
 
     public ArrayList<Recipe> getList()
-    {
+    {//Returns ArrayList for listview activities
         ArrayList<Recipe> result = new ArrayList<>();
 
         SQLiteDatabase db = Helper.getReadableDatabase();
@@ -138,7 +135,6 @@ public class RecipeDatabase extends Activity implements DBInterface {
                 //Create new Recipe from Row
                 Recipe tempRecipe = new Recipe(rID, name, description, mealType, mainIngredient,
                 rating, cooktime, notes, ingredients, directions);
-                Log.d("INFO", "Name of Recipe: " + tempRecipe.getName());
                 //Add the recipe to the ArrayList
                 result.add(tempRecipe);
 
@@ -148,7 +144,10 @@ public class RecipeDatabase extends Activity implements DBInterface {
         return result;
     }
 
-    private void initializeDB() {
+    //Fill Database wil initial values on first startup
+    //not final solution; learning how to store a populated sql file on device and copy over
+    private void initializeDB()
+    {
 
             ArrayList<String> ingredients = new ArrayList<>();
             ArrayList<String> directions = new ArrayList<>();

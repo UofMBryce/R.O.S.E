@@ -15,6 +15,7 @@ public class StubDB implements DBInterface{
     private static StubDB sInstance;
     private static Context sContext;
 
+    //Makes it singleton
     public static synchronized StubDB getInstance(Context context){
         if(sInstance == null){
             sInstance = new StubDB(context.getApplicationContext());
@@ -28,14 +29,13 @@ public class StubDB implements DBInterface{
 
     }
 
-    static ArrayList<Recipe> recipes = new ArrayList<>();
+    static ArrayList<Recipe> recipes = new ArrayList<>(); //Stores the Recipe Objects for outside access
 
 
 
     public void initializeRecipes(){
         ArrayList<String> ingredients = new ArrayList<>();
         ArrayList<String> directions = new ArrayList<>();
-
 
 //-----------------------------------------------------------------------------------------------------------------------------------
         ingredients.add("1 Cup Spaghetti");
@@ -51,7 +51,7 @@ public class StubDB implements DBInterface{
         directions.add("Combine mushrooms, beef, and sauce");
         directions.add("poor sauce over spaghetti");
 
-        Recipe recipe1 = new Recipe("Spaghetti", "Spaghetti with a meat sauce", ingredients, directions);
+        Recipe recipe1 = new Recipe("Spaghetti & Meatsauce", "Spaghetti with a meat sauce", ingredients, directions);
         recipe1.setMainIngredient("Beef");
         recipe1.setMealType("Supper");
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -279,7 +279,8 @@ public class StubDB implements DBInterface{
     public void addRecipe(Recipe recipe){
         recipes.add(recipe);
         String result;
-        result = "Add Completed";
+        //result = "Add Completed";
+        //Result in place for possible future implementation
     }
 
     public void editRecipe(Recipe newRecipe){
@@ -294,10 +295,12 @@ public class StubDB implements DBInterface{
                 flag = true;
             }
         }
-        if(flag)
-            result = "Update Completed";
-        else
-            result = "Update Failed";
+//        if(flag)
+//            result = "Update Completed";
+//        else
+//            result = "Update Failed";
+        //Result in place for possible future implementation
+
     }
 
     public void deleteRecipe(Recipe recipe){
@@ -312,10 +315,12 @@ public class StubDB implements DBInterface{
                 flag = true;
             }
         }
-        if(flag)
-            result = "Deletion Completed";
-        else
-            result = "Deletion Failed";
+//        if(flag)
+//            result = "Deletion Completed";
+//        else
+//            result = "Deletion Failed";
+        //Result in place for possible future implementation
+
     }
     @Override
     public ArrayList<Recipe> getList() {

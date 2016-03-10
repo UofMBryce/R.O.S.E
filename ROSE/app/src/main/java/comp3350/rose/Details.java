@@ -12,6 +12,8 @@ import comp3350.rose.Database.RecipeDatabase;
 import comp3350.rose.model.Recipe;
 import comp3350.rose.Stub.StubDB;
 import comp3350.rose.Controller.DBInterface;
+import comp3350.rose.Business.MyApplication;
+
 import java.util.ArrayList;
 
 public class Details extends ListActivity {
@@ -22,9 +24,8 @@ public class Details extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        //DBInterface repository = RecipeDatabase.getInstance(this);
-        DBInterface repository = StubDB.getInstance(this);
-
+        //Get Database object in order to get ArrayList of stored items
+        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
 
         recipePosition = getIntent().getIntExtra("recipePosition", 0);
         Recipe clickedRecipe = repository.getList().get(recipePosition);
@@ -46,16 +47,16 @@ public class Details extends ListActivity {
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume(){ //TODO flesh this out more.
+        // The idea is to update the arraylist that is displaying data on every change/add
         super.onResume();
         refreshList();
-        Log.d("INFO", "Details onResume called");
     }
 
-    private void refreshList(){
-        //DBInterface repository = RecipeDatabase.getInstance(this);
-        DBInterface repository = StubDB.getInstance(this);
-
+    private void refreshList(){ //TODO Flesh this out more
+        //I just kind of guessed on how its supposed to work. Maybe somebody with more GUI experience
+        //Can make any changes that need to be done
+        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
 
         recipePosition = getIntent().getIntExtra("recipePosition", 0);
         Recipe clickedRecipe = repository.getList().get(recipePosition);

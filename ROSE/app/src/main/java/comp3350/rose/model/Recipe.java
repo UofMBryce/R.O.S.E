@@ -7,7 +7,7 @@ package comp3350.rose.model;
 import java.util.ArrayList;
 
 public class Recipe {
-
+    //Table Name
     public static final String TABLE = "Recipes";
     //Labels
     public static final String KEY_rID = "RecipeID";
@@ -56,7 +56,7 @@ public class Recipe {
         rID = rID_Counter++;
     }
     public Recipe(int rID, String name, String description, ArrayList<String> ingredients, ArrayList<String> directions)
-    {//Basic Constructor
+    {//Basic Constructor for Edit Call
         this.name = name;
         this.description = description;
         this.ingredients = new ArrayList<String>();
@@ -138,7 +138,7 @@ public class Recipe {
         return ingredients;
     }
 
-    public String ingredientString(){
+    public String ingredientString(){ //Creates a single string of ingredients for storage
         String result = "";
         int x;
         for(x=0; x < ingredients.size()-1; x++)
@@ -162,6 +162,18 @@ public class Recipe {
         this.directions = dir;
     }
 
+    public String directionString(){ //creates a single string of directions for storage
+        String result = "";
+        int x;
+        for(x=0; x < directions.size()-1; x++)
+        {
+            result += directions.get(x) + " - ";
+        }
+        result += directions.get(x);
+        return result;
+
+    }
+
     public String getMainIngredient() {
         return mainIngredient;
     }
@@ -180,18 +192,6 @@ public class Recipe {
 
     public String getDescription() {
         return description;
-    }
-
-    public String directionString(){
-        String result = "";
-        int x;
-        for(x=0; x < directions.size()-1; x++)
-        {
-            result += directions.get(x) + " - ";
-        }
-        result += directions.get(x);
-        return result;
-
     }
 
     public void setDescription(String description) {
@@ -224,8 +224,8 @@ public class Recipe {
         return result;
     }
 
-
     // TODO: Write Method
+    // Leaving in for now; may not be necessary
     public void copy(Recipe newRecipe){
 
     }

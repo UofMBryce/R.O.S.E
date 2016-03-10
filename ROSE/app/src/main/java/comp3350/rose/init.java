@@ -14,6 +14,7 @@ import comp3350.rose.Controller.DBInterface;
 import comp3350.rose.model.Recipe;
 import comp3350.rose.Stub.StubDB;
 import comp3350.rose.Database.RecipeDatabase;
+import comp3350.rose.Business.MyApplication;
 
 public class init extends ListActivity {
 
@@ -22,10 +23,8 @@ public class init extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init);
-
-        //The code to change to switch from stub to database
-        //DBInterface repository = RecipeDatabase.getInstance(this);
-        DBInterface repository = StubDB.getInstance(this);
+        //Get Database to have access to arraylist of stored recipes
+        DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
 
         ArrayList<Recipe> recipes = repository.getList();
         ArrayList<String> recipeDisplay = new ArrayList<>();
@@ -39,10 +38,10 @@ public class init extends ListActivity {
     }
 
     @Override
-    protected void onResume() {
+    protected void onResume() { //TODO Flesh this out more
+        //Same as the DetaiLView mode
         super.onResume();
         refreshList();
-        Log.d("INFO", "Init onResume called");
     }
 
     @Override
@@ -64,9 +63,10 @@ public class init extends ListActivity {
         startActivity(myIntent);
     }
 
-    private void refreshList(){
-        //DBInterface repository = RecipeDatabase.getInstance(this);
-        DBInterface repository = StubDB.getInstance(this);
+    private void refreshList(){//TODO Flesh this out more
+        //Same as the DetailView mode
+        DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
+
         ArrayList<Recipe> recipes = repository.getList();
         ArrayList<String> recipeDisplay = new ArrayList<>();
         for(int i=0; i<recipes.size(); i++) {
