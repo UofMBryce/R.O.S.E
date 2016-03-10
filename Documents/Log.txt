@@ -337,6 +337,7 @@ Next Meeting: Friday
 	- get status updates on team members progress
 	- remind everybody to log work times 
 	- make sure everybody is done by Friday night so Chad can start unit testing 
+	- edit function needs fixed 
 	
 --------------------------------------------------------------------------------------------------------------------------------------
 
