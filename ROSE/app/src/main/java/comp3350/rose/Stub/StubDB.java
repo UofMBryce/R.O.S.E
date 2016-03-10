@@ -4,18 +4,33 @@ package comp3350.rose.Stub;
  * Created by Bryce on 3/7/2016.
  */
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
-import comp3350.rose.Database.DBInterface;
+import comp3350.rose.Controller.DBInterface;
 import comp3350.rose.model.Recipe;
 
 public class StubDB implements DBInterface{
+    private static StubDB sInstance;
+    private static Context sContext;
+
+    public static synchronized StubDB getInstance(Context context){
+        if(sInstance == null){
+            sInstance = new StubDB(context.getApplicationContext());
+        }
+        return sInstance;
+    }
+
+    private StubDB(Context context){
+        sContext = context;
+        this.initializeRecipes();
+
+    }
 
     static ArrayList<Recipe> recipes = new ArrayList<>();
 
-    public StubDB() {
-        initializeRecipes();
-    }
+
 
     public void initializeRecipes(){
         ArrayList<String> ingredients = new ArrayList<>();
@@ -302,10 +317,12 @@ public class StubDB implements DBInterface{
         else
             result = "Deletion Failed";
     }
-    public static ArrayList<Recipe> getList() {
+    @Override
+    public ArrayList<Recipe> getList() {
         return recipes;
     }
 
+    //TODO Move this to seperate class
     public static ArrayList<String> getShoppingList(){
         ArrayList<String> shoppingList = new ArrayList<>();
         shoppingList.add("Carrots");

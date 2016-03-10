@@ -8,8 +8,21 @@ import java.util.ArrayList;
 
 public class Recipe {
 
-    static int rID_Counter = 1;
+    public static final String TABLE = "Recipes";
+    //Labels
+    public static final String KEY_rID = "RecipeID";
+    public static final String KEY_name = "Recipe_Name";
+    public static final String KEY_mealtype = "Meal_Type";
+    public static final String KEY_mainingredient = "Main_Ingredient";
+    public static final String KEY_rating = "Rating";
+    public static final String KEY_description = "Description";
+    public static final String KEY_ingredients = "Ingredients";
+    public static final String KEY_directions = "Directions";
+    public static final String KEY_cooktime = "Cook_Time";
+    public static final String KEY_notes = "Notes";
 
+    //Attributes
+    static int rID_Counter = 1;
     private int rID;
     private String name;
     private String mealType;
@@ -42,6 +55,18 @@ public class Recipe {
             this.directions.add(p);
         rID = rID_Counter++;
     }
+    public Recipe(int rID, String name, String description, ArrayList<String> ingredients, ArrayList<String> directions)
+    {//Basic Constructor
+        this.name = name;
+        this.description = description;
+        this.ingredients = new ArrayList<String>();
+        for(String p : ingredients)
+            this.ingredients.add(p);
+        this.directions = new ArrayList<String>();
+        for(String p : directions)
+            this.directions.add(p);
+        this.rID = rID;
+    }
 
     public Recipe(String name, String description, ArrayList<String> ingredients, ArrayList<String> directions, String mainIngredient)
     {//Constructor with mainIngredient
@@ -58,7 +83,7 @@ public class Recipe {
     }
 
     public Recipe(String name, String description, ArrayList<String> ingredients, ArrayList<String> directions, String mainIngredient, String mealType)
-    {//Full Constructor
+    {//Extra Constructor
         this.name = name;
         this.description = description;
         this.mainIngredient = mainIngredient;
@@ -70,6 +95,26 @@ public class Recipe {
         for(String p : directions)
             this.directions.add(p);
         rID = rID_Counter++;
+    }
+
+    public Recipe(int rID, String name, String description, String mealType, String mainIngredient,
+                  int rating, int cooktime, String notes, ArrayList<String> ingredients,
+                  ArrayList<String> directions)
+    { //Full Constructor
+        this.rID = rID;
+        this.name = name;
+        this.description = description;
+        this.mealType = mealType;
+        this.mainIngredient = mainIngredient;
+        this.rating = rating;
+        this.cooktime = cooktime;
+        this.notes = notes;
+        this.ingredients = new ArrayList<String>();
+        for(String p : ingredients)
+            this.ingredients.add(p);
+        this.directions = new ArrayList<String>();
+        for(String p : directions)
+            this.directions.add(p);
     }
 
 
@@ -91,6 +136,18 @@ public class Recipe {
 
     public ArrayList<String> getIngredients() {
         return ingredients;
+    }
+
+    public String ingredientString(){
+        String result = "";
+        int x;
+        for(x=0; x < ingredients.size()-1; x++)
+        {
+            result += ingredients.get(x) + " - ";
+        }
+        result += ingredients.get(x);
+        return result;
+
     }
 
     public void setIngredients(ArrayList<String> ing) {
@@ -123,6 +180,18 @@ public class Recipe {
 
     public String getDescription() {
         return description;
+    }
+
+    public String directionString(){
+        String result = "";
+        int x;
+        for(x=0; x < directions.size()-1; x++)
+        {
+            result += directions.get(x) + " - ";
+        }
+        result += directions.get(x);
+        return result;
+
     }
 
     public void setDescription(String description) {

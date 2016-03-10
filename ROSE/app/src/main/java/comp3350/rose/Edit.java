@@ -2,6 +2,7 @@ package comp3350.rose;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,12 +14,15 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import comp3350.rose.model.Recipe;
+import comp3350.rose.Database.RecipeDatabase;
 import comp3350.rose.Stub.StubDB;
+import comp3350.rose.model.Recipe;
+import comp3350.rose.Controller.DBInterface;
 
 public class Edit extends AppCompatActivity {
     int recipePosition = 0;
     int editType = 0;
+    int rID = 0;
 
     Recipe recipeToModify;
     String name = "";
@@ -29,6 +33,9 @@ public class Edit extends AppCompatActivity {
     int changePosition;
     int ingredSID = 0, instruSID = 0;
     String input = "";
+
+   // DBInterface repository = RecipeDatabase.getInstance(this);
+    DBInterface repository = StubDB.getInstance(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +53,8 @@ public class Edit extends AppCompatActivity {
         }
         else if(editType == 2){ //Modify Recipe
             recipePosition = getIntent().getIntExtra("recipePosition", 0);
-            Recipe recipeToModify = StubDB.getList().get(recipePosition);
-
+            Recipe recipeToModify = repository.getList().get(recipePosition);
+            rID = recipeToModify.getrID();
             ArrayList<String> recipeDetails = new ArrayList<>();
             recipeDetails.add(recipeToModify.getName());
             recipeDetails.add(recipeToModify.getDescription());
@@ -142,8 +149,12 @@ public class Edit extends AppCompatActivity {
                 }
             }
         }
-        recipeToModify = new Recipe(name, description, ingredients, instructions);
+        Log.d("INFO", "Name passed to edit function: " + name);
+        recipeToModify = new Recipe(rID, name, description, ingredients, instructions);
+        repository.editRecipe(recipeToModify);
         // TODO: update to database
         Toast.makeText(getApplicationContext(), "Update to database", Toast.LENGTH_LONG).show();
+        finish();
     }
+
 }

@@ -3,38 +3,393 @@ package comp3350.rose.Database;
 /**
  * Created by Bryce on 3/7/2016.
  */
-import comp3350.rose.model.Recipe;
-import java.util.ArrayList;
-//import comp3350.rose.Database.dbHelper;
+
+import android.app.Activity;
+import android.content.Context;
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
-public class RecipeDatabase implements DBInterface {
+import java.util.ArrayList;
 
+import comp3350.rose.model.Recipe;
+import comp3350.rose.Database.dbHelper;
+import comp3350.rose.Controller.DBInterface;
+
+public class RecipeDatabase extends Activity implements DBInterface {
+    private dbHelper Helper;
+    private static RecipeDatabase sInstance;
+    private static Context sContext;
+
+    public static synchronized RecipeDatabase getInstance(Context context){
+        if(sInstance == null){
+            sInstance = new RecipeDatabase(context.getApplicationContext());
+        }
+        return sInstance;
+    }
+
+    private RecipeDatabase(Context context){
+        Helper = new dbHelper(context);
+        sContext = context;
+        this.initializeDB();
+
+    }
+
+    @Override
     public void addRecipe(Recipe recipe)
     {
+        String ingredients = recipe.ingredientString();
+        String directions = recipe.directionString();
+
+
+        SQLiteDatabase db = Helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(Recipe.KEY_rID, recipe.getrID());
+        values.put(Recipe.KEY_name, recipe.getName());
+        values.put(Recipe.KEY_mealtype, recipe.getMealType());
+        values.put(Recipe.KEY_mainingredient, recipe.getMainIngredient());
+        values.put(Recipe.KEY_description, recipe.getDescription());
+        values.put(Recipe.KEY_ingredients, ingredients);
+        values.put(Recipe.KEY_directions, directions);
+        values.put(Recipe.KEY_notes, recipe.getNotes());
+        values.put(Recipe.KEY_rating, recipe.getRating());
+        values.put(Recipe.KEY_cooktime, recipe.getCooktime());
+
+        db.insert(Recipe.TABLE, null, values);
+
+        db.close();
     }
 
+    @Override
     public void editRecipe(Recipe recipe)
     {
+        SQLiteDatabase db = Helper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        String ingredients = recipe.ingredientString();
+        String directions = recipe.directionString();
 
+        values.put(Recipe.KEY_rID, recipe.getrID());
+        values.put(Recipe.KEY_name, recipe.getName());
+        values.put(Recipe.KEY_mealtype, recipe.getMealType());
+        values.put(Recipe.KEY_mainingredient, recipe.getMainIngredient());
+        values.put(Recipe.KEY_description, recipe.getDescription());
+        values.put(Recipe.KEY_ingredients, ingredients);
+        values.put(Recipe.KEY_directions, directions);
+        values.put(Recipe.KEY_notes, recipe.getNotes());
+        values.put(Recipe.KEY_rating, recipe.getRating());
+        values.put(Recipe.KEY_cooktime, recipe.getCooktime());
+        Log.d("INFO", "Editing Recipe Number " + recipe.getrID());
+        Log.d("INFO", "New Recipe Name: " + recipe.getName());
+        int x = db.update(Recipe.TABLE, values, Recipe.KEY_rID + " = ?", new String[]{String.valueOf(recipe.getrID())});
+        Log.d("INFO", "Result = " + x);
+        db.close();
     }
 
+    @Override
     public void deleteRecipe(Recipe recipe)
     {
+        SQLiteDatabase db = Helper.getWritableDatabase();
 
-    }
-
-    public void updateList(ArrayList<Recipe> list)//may not be needed
-    {
-
+        db.delete(Recipe.TABLE, Recipe.KEY_rID + " = ", new String[]{String.valueOf(recipe.getrID())});
+        db.close();
     }
 
     public ArrayList<Recipe> getList()
     {
         ArrayList<Recipe> result = new ArrayList<>();
 
-        //create an arraylist from database entries
+        SQLiteDatabase db = Helper.getReadableDatabase();
 
+        String selectQuery = ("SELECT * FROM " + Recipe.TABLE);
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                ArrayList<String> ingredients = new ArrayList<>(); // Temp Storage
+                ArrayList<String> directions = new ArrayList<>(); // Temp Storage
+
+                String tempIngredient = cursor.getString(cursor.getColumnIndex(Recipe.KEY_ingredients));
+                String[] temp = tempIngredient.split("- "); //Split up ingredients to individual strings
+
+                for(int x=0; x < temp.length; x++) {
+                    ingredients.add(temp[x]);
+                }
+
+                String tempDirection = cursor.getString(cursor.getColumnIndex(Recipe.KEY_directions));
+                temp = tempDirection.split("- ");//split up directions into individual strings
+
+                for(int x=0; x < temp.length; x++) {
+                    directions.add(temp[x]);
+                }
+                //Get Values for Recipe Object
+                int rID = cursor.getInt(cursor.getColumnIndex(Recipe.KEY_rID));
+                String name = cursor.getString(cursor.getColumnIndex(Recipe.KEY_name));
+
+                String mealType = cursor.getString(cursor.getColumnIndex(Recipe.KEY_mealtype));
+                String mainIngredient = cursor.getString(cursor.getColumnIndex(Recipe.KEY_mainingredient));
+                int rating = cursor.getInt(cursor.getColumnIndex(Recipe.KEY_rating));
+                String description = cursor.getString(cursor.getColumnIndex(Recipe.KEY_description));
+                int cooktime = cursor.getInt(cursor.getColumnIndex(Recipe.KEY_cooktime));
+                String notes = cursor.getString(cursor.getColumnIndex(Recipe.KEY_notes));
+
+                //Create new Recipe from Row
+                Recipe tempRecipe = new Recipe(rID, name, description, mealType, mainIngredient,
+                rating, cooktime, notes, ingredients, directions);
+                Log.d("INFO", "Name of Recipe: " + tempRecipe.getName());
+                //Add the recipe to the ArrayList
+                result.add(tempRecipe);
+
+            }while (cursor.moveToNext());
+        }
+        //Return the populated ArrayList for use
         return result;
+    }
+
+    private void initializeDB() {
+
+            ArrayList<String> ingredients = new ArrayList<>();
+            ArrayList<String> directions = new ArrayList<>();
+
+
+//-----------------------------------------------------------------------------------------------------------------------------------
+            ingredients.add("1 Cup Spaghetti");
+            ingredients.add("1/2 lb Ground Beef");
+            ingredients.add("1 Cup Spaghetti Sauce");
+            ingredients.add("4 Fresh Mushrooms");
+
+            directions.add("Cut Up Mushrooms into slices");
+            directions.add("Cook beef on frying pan until brown");
+            directions.add("boil spaghetti until al dente");
+            directions.add("bring sauce to boil in sauce pan");
+            directions.add("Fry mushrooms in pan");
+            directions.add("Combine mushrooms, beef, and sauce");
+            directions.add("poor sauce over spaghetti");
+
+            Recipe recipe1 = new Recipe(1, "Spaghetti", "Spaghetti with a meat sauce", ingredients, directions);
+            recipe1.setMainIngredient("Beef");
+            recipe1.setMealType("Supper");
+//-----------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("1 Cup frozen peas and carrots");
+            ingredients.add("1/2 lb Ground Chicken");
+            ingredients.add("1/3 Cup Honey Garlic Sauce");
+            ingredients.add("1 Cup Rice");
+
+            directions.add("boil peas and carrots until cooked ");
+            directions.add("Cook chicken on frying pan until no pinkness remains");
+            directions.add("cook rice until fluffy");
+            directions.add("combine chicken, rice, and vegetables into pot");
+            directions.add("add honey garlic sauce");
+            directions.add("cook on low until warm");
+
+            Recipe recipe2 = new Recipe(2, "Honey Garlic Chicken", "A twist on stir fry thats simple to make", ingredients, directions);
+            recipe2.setMainIngredient("Chicken");
+            recipe2.setMealType("Supper");
+//-----------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("2 Slices Bread");
+            ingredients.add("4 thin slices turkey");
+            ingredients.add("20 ml Mayonaise");
+            ingredients.add("1 slice cheddar cheese");
+            ingredients.add("1 Leaf lettuce");
+
+            directions.add("Toast bread lightly");
+            directions.add("rip lettuce up into shreds");
+            directions.add("cover bottom piece of bread in mayonaise");
+            directions.add("add cheese slice, turkey, and shredded lettuce");
+            directions.add("top with second piece of bread");
+            directions.add("silce down the middle");
+
+            Recipe recipe3 = new Recipe(3, "Turkey Sandwhich","A classic toasted turkey sandwhich", ingredients, directions);
+            recipe3.setMainIngredient("Turkey");
+            recipe3.setMealType("Lunch");
+//-----------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("2 eggs");
+            ingredients.add("1/2 cup milk");
+            ingredients.add("4 slices bread");
+            ingredients.add("1 tsbp cinnamon");
+
+            directions.add("whisk egg, milk, and cinnamon together");
+            directions.add("soak each piece of bread in egg mixture");
+            directions.add("place on frying pan, cook side until golden brown");
+            directions.add("flip bread, do same to other side");
+            directions.add("add topping of choice (syrup and icing sugar");
+
+            Recipe recipe4 = new Recipe(4, "French Toast", "Simple French Toast thats sure to be a hit", ingredients, directions);
+            recipe4.setMealType("Breakfast");
+//-----------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("1 cup cereal of choice");
+            ingredients.add("1 cup milk");
+
+            directions.add("pour cereal into bowl ");
+            directions.add("pour milk into bowl");
+
+            Recipe recipe5 = new Recipe(5, "Cereal", "Just cereal. pretty basic", ingredients, directions);
+            recipe5.setMealType("Breakfast");
+//-----------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("1 lb pork roast");
+            ingredients.add("1 bottle bbq sauce");
+            ingredients.add("1 red onion, diced");
+            ingredients.add("1 can soda (7-up or coke");
+            ingredients.add("1 slice marble cheese");
+            ingredients.add("1 dinner roll");
+            ingredients.add("15 ml mayonaise");
+
+            directions.add("cook pork roast in slow cooker for 8 hours");
+            directions.add("use forks to shred pork");
+            directions.add("add shredded pork back into slow cooker");
+            directions.add("pour bbq sauce and can of pop into slow cooker");
+            directions.add("cook on low for one hour00");
+            directions.add("add pork, mayo, onion, and cheese to dinner roll");
+
+            Recipe recipe6 = new Recipe(6, "BBQ pulled pork", "delicous slow cooked pull pork in savory bbq sauce", ingredients, directions);
+
+            recipe6.setMainIngredient("Pork");
+            recipe6.setMealType("Supper");
+//-----------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("2 boneless skinless chicken breasts");
+            ingredients.add("2 cups chopped carrots");
+            ingredients.add("1 cup chopped celery");
+            ingredients.add("2 cups spaghetti noodles");
+            ingredients.add("4 cups chicken broth");
+
+            directions.add("combine chicken broth, chicken breasts, carrots, and celery into slowcooker");
+            directions.add("cook on low for 7 hours");
+            directions.add("remove chicken breasts and cut into small chunks");
+            directions.add("add noodles and chicken to slow cooker");
+            directions.add("cook until noodles are soft");
+
+            Recipe recipe7 = new Recipe(7, "Chicken Noodle Soup", "Classic chicken noodle soup thats sure to delight", ingredients, directions);
+            recipe7.setMainIngredient("Chicken");
+            recipe7.setMealType("Lunch");
+//-------------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("1 lb roast beef");
+            ingredients.add("2 cans beef stock or broth");
+            ingredients.add("1 slice swiss cheese");
+            ingredients.add("1 cup diced white onion");
+            ingredients.add("1 cup chopped mushrooms");
+            ingredients.add("1 tbsp butter");
+            ingredients.add("1 crusty roll");
+
+            directions.add("combine roast beef, onion, and broth in slowcooker");
+            directions.add("cook on low for 6 hours");
+            directions.add("fry mushrooms in butter");
+            directions.add("Thinly slice beef");
+            directions.add("toast crusty bun");
+            directions.add("layer beef on bun, top with mushrooms and cheese");
+            directions.add("pour broth into cup for dipping");
+
+            Recipe recipe8 = new Recipe(8, "Beef Dip", "Deli style beef dip with tasty aus jus", ingredients, directions);
+
+            recipe8.setMainIngredient("Beef");
+            recipe8.setMealType("Lunch");
+//--------------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("1 package bacon");
+            ingredients.add("2 cups cubed hashbrowns");
+            ingredients.add("2 eggs");
+            ingredients.add("1 cup shredded cheddar cheese");
+
+            directions.add("fry bacon in frying pan on medium");
+            directions.add("cook hashbrowns in oven at 400 degrees for 20 minutes");
+            directions.add("cook eggs to taste on frying pan");
+            directions.add("fill bowl with cooked hashbrowns");
+            directions.add("chop up bacon and eggs, and add on top of hashbrowns");
+            directions.add("cover with shredded cheese");
+            directions.add("bake in oven at 350 degrees for 5 minutes or until cheese is melted");
+
+            Recipe recipe9 = new Recipe(9, "Breakfast Bowl", "a hearty breakfast bowl to start the day off right", ingredients, directions);
+
+            recipe9.setMainIngredient("Pork");
+            recipe9.setMealType("Breakfast");
+//--------------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("1 cup vanilla yogurt");
+            ingredients.add("1/2 cup granola");
+            ingredients.add("1/2 cup frozen mixed berries");
+            ingredients.add("1 banana");
+
+            directions.add("cook granola on cooking pan in oven at 350 degrees for 10 minutes");
+            directions.add("Slice banana");
+            directions.add("fill a tall glass with half of the yogurt");
+            directions.add("add half the berries and half the chopped banana");
+            directions.add("fill cup with rest of yogurt");
+            directions.add("top yogurt with rest of berries and banana");
+            directions.add("sprinkle granola over beries");
+
+            Recipe recipe10 = new Recipe(10, "Yogurt Parfait", "A healthy natural breakfast option", ingredients, directions);
+
+            recipe10.setMealType("Breakfast");
+//--------------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+            ingredients.add("2 slices white bread");
+            ingredients.add("1 slice cheddar cheese");
+            ingredients.add("1 slice mozzarella cheese");
+            ingredients.add("2 thin slices of ham");
+            ingredients.add("1 tbsp butter");
+
+            directions.add("cover both sides of each piece of bread with butter");
+            directions.add("make a sandwhich out of the buttered bread, cheese, and ham");
+            directions.add("place sandwhich on frying pan and cook until first side is golden");
+            directions.add("flip sandwhich, and fry second side until golden");
+            directions.add("slice sandwhich down the middle");
+
+            Recipe recipe11 = new Recipe(11, "Grilled Ham & Cheese", "A grilled cheese with ham added in", ingredients, directions);
+
+            recipe11.setMainIngredient("Pork");
+            recipe11.setMealType("Breakfast");
+//--------------------------------------------------------------------------------------------------------------------------------------
+            ingredients.clear();
+            directions.clear();
+
+            ingredients.add("1 head romaine lettuce");
+            ingredients.add("1 chicken breast, diced");
+            ingredients.add("1 cup croutons");
+            ingredients.add("1/2 cup caesar salad dressing");
+            ingredients.add("2 tbsp parmesean cheese");
+            ingredients.add("2 strips bacon");
+
+            directions.add("fry bacon on medium until crispy");
+            directions.add("bake chicken at 400 degrees for 20 minutes");
+            directions.add("chop letuce");
+            directions.add("mix lettuce, dressing, croutons, and chicken breast");
+            directions.add("crumble bacon over salad");
+            directions.add("sprinkle parmesean cheese over salad");
+
+            Recipe recipe12 = new Recipe(12, "Chicken Caesar Salad", "classic chicken caesar salad", ingredients, directions);
+
+            recipe12.setMainIngredient("Chicken");
+            recipe12.setMealType("Supper");
+//--------------------------------------------------------------------------------------------------------------------------------------
+            this.addRecipe(recipe1);
+            this.addRecipe(recipe2);
+            this.addRecipe(recipe3);
+            this.addRecipe(recipe4);
+            this.addRecipe(recipe5);
+            this.addRecipe(recipe6);
+            this.addRecipe(recipe7);
+            this.addRecipe(recipe8);
+            this.addRecipe(recipe9);
+            this.addRecipe(recipe10);
+            this.addRecipe(recipe11);
+            this.addRecipe(recipe12);
     }
 }

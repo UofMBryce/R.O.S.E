@@ -3,31 +3,46 @@ package comp3350.rose;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import comp3350.rose.Stub.StubDB;
+import comp3350.rose.Controller.DBInterface;
 import comp3350.rose.model.Recipe;
+import comp3350.rose.Stub.StubDB;
+import comp3350.rose.Database.RecipeDatabase;
 
 public class init extends ListActivity {
 
+    ListView lv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_init);
 
-        ArrayList<Recipe> recipes = StubDB.getList();
+        //The code to change to switch from stub to database
+        //DBInterface repository = RecipeDatabase.getInstance(this);
+        DBInterface repository = StubDB.getInstance(this);
+
+        ArrayList<Recipe> recipes = repository.getList();
         ArrayList<String> recipeDisplay = new ArrayList<>();
         for(int i=0; i<recipes.size(); i++) {
             recipeDisplay.add(recipes.get(i).getName());
         }
 
         ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeDisplay);
-        ListView lv = this.getListView();
+        lv = this.getListView();
         lv.setAdapter(myArrayAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshList();
+        Log.d("INFO", "Init onResume called");
     }
 
     @Override
@@ -48,4 +63,20 @@ public class init extends ListActivity {
         myIntent.putExtra("editType", 1); // 1 corresponds to add recipe
         startActivity(myIntent);
     }
+
+    private void refreshList(){
+        //DBInterface repository = RecipeDatabase.getInstance(this);
+        DBInterface repository = StubDB.getInstance(this);
+        ArrayList<Recipe> recipes = repository.getList();
+        ArrayList<String> recipeDisplay = new ArrayList<>();
+        for(int i=0; i<recipes.size(); i++) {
+            recipeDisplay.add(recipes.get(i).getName());
+        }
+
+        ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeDisplay);
+        lv = this.getListView();
+        lv.setAdapter(myArrayAdapter);
+    }
+
+
 }
