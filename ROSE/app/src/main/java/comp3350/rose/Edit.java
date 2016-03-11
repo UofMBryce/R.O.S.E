@@ -105,6 +105,8 @@ public class Edit extends AppCompatActivity {
 
     public void saveClick(View view) {
         ListView lv = (ListView) findViewById(R.id.editListField);
+        EditText editField = (EditText) findViewById(R.id.editField);
+        input = editField.getText().toString();
         if (changePosition == 0) {
             name = input;
             description = lv.getAdapter().getItem(1).toString();
@@ -153,10 +155,6 @@ public class Edit extends AppCompatActivity {
         //get Database object to perform update method
         DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
 
-        //TODO Fix This
-        //recipeToModify just creates a new recipe object with the same variables. For instance
-        //I tried to edit the name and when I check the name variable here it hasn't been updated to
-        //what I input
         recipeToModify = new Recipe(rID, name, description, ingredients, instructions);
         repository.editRecipe(recipeToModify);
         Toast.makeText(getApplicationContext(), "Update to database", Toast.LENGTH_LONG).show();
