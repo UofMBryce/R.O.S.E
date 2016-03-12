@@ -340,7 +340,22 @@ Next Meeting: Friday
 	- edit function needs fixed 
 	
 --------------------------------------------------------------------------------------------------------------------------------------
+3/11/2016
+- Group Meeting
+        Kev, Chad, Jiqing in attendance
 
+Recipe sorting and shopping list edit functionality are coming along nicely
+We are thinking we will have one global recipeList that we will use to display recipes in the init activity
+All edit operations will effect both the global recipeList and make direct changes to the database
+Sort will update the global recipeList to reflect the sorting options selected
+Should have several updates to repository tonight
+
+Next Meeting: Monday
+        - Get all our documents ready for hand in
+        - Make sure everything is functional on the nexus 7 tablet
+        - Submit Iteration 2
+        
+--------------------------------------------------------------------------------------------------------------------------------------
 
 
 
