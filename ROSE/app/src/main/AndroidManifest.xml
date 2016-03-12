@@ -3,7 +3,7 @@
     package="comp3350.rose">
 
     <application
-        android:name="comp3350.rose.Business.MyApplication"
+        android:name=".Business.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,7 +21,8 @@
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Edit" />
-        <activity android:name=".ShoppingList"></activity>
+        <activity android:name=".ShoppingList" />
+        <activity android:name=".SortRecipes"></activity>
     </application>
 
 </manifest>

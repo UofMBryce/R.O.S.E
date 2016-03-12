@@ -28,7 +28,7 @@ public class Details extends ListActivity {
         DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
 
         recipePosition = getIntent().getIntExtra("recipePosition", 0);
-        Recipe clickedRecipe = repository.getList().get(recipePosition);
+        Recipe clickedRecipe = ((MyApplication)this.getApplication()).getSortedRecipes().get(recipePosition); //use sorted list
         ArrayList<String> recipeDetails = new ArrayList<>();
         recipeDetails.add(clickedRecipe.getName());
         recipeDetails.add(clickedRecipe.getDescription());
@@ -59,7 +59,7 @@ public class Details extends ListActivity {
         DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
 
         recipePosition = getIntent().getIntExtra("recipePosition", 0);
-        Recipe clickedRecipe = repository.getList().get(recipePosition);
+        Recipe clickedRecipe = ((MyApplication)this.getApplication()).getSortedRecipes().get(recipePosition); //use sorted list
         ArrayList<String> recipeDetails = new ArrayList<>();
         recipeDetails.add(clickedRecipe.getName());
         recipeDetails.add(clickedRecipe.getDescription());

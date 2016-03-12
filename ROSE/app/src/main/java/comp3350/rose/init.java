@@ -27,6 +27,7 @@ public class init extends ListActivity {
         DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
 
         ArrayList<Recipe> recipes = repository.getList();
+        ((MyApplication)this.getApplication()).setSortedRecipes(recipes); //initialize sortedRecipes to full recipe list
         ArrayList<String> recipeDisplay = new ArrayList<>();
         for(int i=0; i<recipes.size(); i++) {
             recipeDisplay.add(recipes.get(i).getName());
@@ -63,11 +64,16 @@ public class init extends ListActivity {
         startActivity(myIntent);
     }
 
+    public void sortButton(View view){
+        Intent myIntent = new Intent(this, SortRecipes.class);
+        startActivity(myIntent);
+    }
+
     private void refreshList(){//TODO Flesh this out more
         //Same as the DetailView mode
-        DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
+        //DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
 
-        ArrayList<Recipe> recipes = repository.getList();
+        ArrayList<Recipe> recipes = ((MyApplication)this.getApplication()).getSortedRecipes(); //refresh with sortedRecipes
         ArrayList<String> recipeDisplay = new ArrayList<>();
         for(int i=0; i<recipes.size(); i++) {
             recipeDisplay.add(recipes.get(i).getName());
