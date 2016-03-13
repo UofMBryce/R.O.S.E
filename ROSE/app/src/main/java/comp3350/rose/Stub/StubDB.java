@@ -327,15 +327,6 @@ public class StubDB implements DBInterface{
         return recipes;
     }
 
-    //TODO Move this to seperate class
-    public static ArrayList<String> getShoppingList(){
-        ArrayList<String> shoppingList = new ArrayList<>();
-        shoppingList.add("Carrots");
-        shoppingList.add("Butter");
-        shoppingList.add("Bacon");
-        shoppingList.add("Jello");
-        return shoppingList;
-    }
 
 
 }

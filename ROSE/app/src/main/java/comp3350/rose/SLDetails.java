@@ -9,16 +9,24 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import comp3350.rose.Stub.StubDB;
+import comp3350.rose.Business.MyApplication;
+import comp3350.rose.Controller.DBSLInterface;
+import comp3350.rose.model.ShoppingList;
 
-public class ShoppingList extends ListActivity {
+public class SLDetails extends ListActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_list);
+        DBSLInterface repository = ((MyApplication)this.getApplication()).getSLRepository(this);
 
-        ArrayList<String> shoppingDisplay = StubDB.getShoppingList();
+
+        ArrayList<ShoppingList> shoppingLists = repository.getShoppingList();
+        ArrayList<String> shoppingDisplay = new ArrayList<String>();
+        for (int i = 0; i < shoppingLists.size(); i++) {
+            shoppingDisplay.add(shoppingLists.get(i).getName());
+        }
         ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shoppingDisplay);
         ListView lv = this.getListView();
         lv.setAdapter(myArrayAdapter);

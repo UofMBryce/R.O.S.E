@@ -12,10 +12,15 @@ import android.content.Context;
 
 import java.util.ArrayList;
 
+import comp3350.rose.Controller.DBSLInterface;
 import comp3350.rose.Database.RecipeDatabase;
 import comp3350.rose.Controller.DBInterface;
+import comp3350.rose.Database.ShoppingListDatabase;
+import comp3350.rose.Database.dbSLHelper;
 import comp3350.rose.Stub.StubDB;
+import comp3350.rose.Stub.StubSLDB;
 import comp3350.rose.model.Recipe;
+import comp3350.rose.model.ShoppingList;
 
 public class MyApplication extends Application {
     //Used to Change the repository type for the entire application
@@ -32,6 +37,12 @@ public class MyApplication extends Application {
     public DBInterface getRepository(Context context) {
         //DBInterface repository = RecipeDatabase.getInstance(context);
         DBInterface repository = StubDB.getInstance(context);
+        return repository;
+    }
+
+    public DBSLInterface getSLRepository(Context context) {
+//        DBSLInterface repository = ShoppingListDatabase.getInstance(context);
+        DBSLInterface repository = StubSLDB.getInstance(context);
         return repository;
     }
 

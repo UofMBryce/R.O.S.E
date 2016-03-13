@@ -76,7 +76,7 @@ public class ShoppingListDatabase extends Activity implements DBSLInterface{
     }
 
 
-    public ArrayList<ShoppingList> getList()
+    public ArrayList<ShoppingList> getShoppingList()
     {//Returns ArrayList for listview activities
         ArrayList<ShoppingList> result = new ArrayList<>();
 

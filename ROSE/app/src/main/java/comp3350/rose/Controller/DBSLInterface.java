@@ -10,5 +10,5 @@ public interface DBSLInterface{
     public void addShoppingList(ShoppingList shoppinglist);
     public void deleteShoppingList(ShoppingList shoppinglist);
     public void editShoppingList(ShoppingList shoppinglist);
-    public ArrayList<ShoppingList> getList();
+    public ArrayList<ShoppingList> getShoppingList();
 }

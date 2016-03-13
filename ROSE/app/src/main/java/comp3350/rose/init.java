@@ -55,7 +55,7 @@ public class init extends ListActivity {
     }
 
     public void shoppingListButton(View view){
-        startActivity(new Intent(this, ShoppingList.class));
+        startActivity(new Intent(this, SLDetails.class));
     }
 
     public void addRecipeButton(View view){

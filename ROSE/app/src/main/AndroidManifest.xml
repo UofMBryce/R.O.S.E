@@ -21,7 +21,7 @@
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Edit" />
-        <activity android:name=".ShoppingList" />
+        <activity android:name=".SLDetails" />
         <activity android:name=".SortRecipes"></activity>
     </application>
 

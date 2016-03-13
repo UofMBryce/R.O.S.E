@@ -29,7 +29,7 @@ public class Details extends ListActivity {
 
         recipePosition = getIntent().getIntExtra("recipePosition", 0);
         Recipe clickedRecipe = ((MyApplication)this.getApplication()).getSortedRecipes().get(recipePosition); //use sorted list
-        ArrayList<String> recipeDetails = new ArrayList<>();
+        ArrayList<String> recipeDetails = new ArrayList<String>();
         recipeDetails.add(clickedRecipe.getName());
         recipeDetails.add(clickedRecipe.getDescription());
         recipeDetails.add("Ingredients:");
