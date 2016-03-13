@@ -14,11 +14,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import comp3350.rose.Controller.DBSLInterface;
 import comp3350.rose.Database.RecipeDatabase;
 import comp3350.rose.Stub.StubDB;
 import comp3350.rose.model.Recipe;
 import comp3350.rose.Business.MyApplication;
 import comp3350.rose.Controller.DBInterface;
+import comp3350.rose.model.ShoppingList;
 
 public class Edit extends AppCompatActivity {
     int recipePosition = 0;
@@ -35,6 +37,8 @@ public class Edit extends AppCompatActivity {
     int ingredSID = 0, instruSID = 0;
     String input = "";
 
+    ShoppingList shoppingListToAdd;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +46,9 @@ public class Edit extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
         //Get Database in order to acess the arraylist
         DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
+        DBSLInterface slRepository = ((MyApplication) this.getApplication()).getSLRepository(this);
 
-        int editType = getIntent().getIntExtra("editType", 0);
+        editType = getIntent().getIntExtra("editType", 0);
         //editType == 1  will be add recipe
         //editType == 2  will be modify recipe
         //editType == 3  will be add to shopping list
@@ -99,66 +104,91 @@ public class Edit extends AppCompatActivity {
 
         }else if(editType == 3){ // Add to Shopping List
 //            Toast.makeText(getApplicationContext(), "Add to shopping list not yet implemented!", Toast.LENGTH_LONG).show();
-
+            ArrayList<ShoppingList> shoppingLists = slRepository.getShoppingList();
+            ArrayList<String> shoppingDisplay = new ArrayList<String>();
+            for (int i = 0; i < shoppingLists.size(); i++) {
+                shoppingDisplay.add(shoppingLists.get(i).getName());
+            }
+            ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shoppingDisplay);
+            ListView lv = (ListView) findViewById(R.id.editListField);
+            lv.setAdapter(myArrayAdapter);
         }
     }
 
     public void saveClick(View view) {
-        ListView lv = (ListView) findViewById(R.id.editListField);
-        EditText editField = (EditText) findViewById(R.id.editField);
-        input = editField.getText().toString();
-        if (changePosition == 0) {
-            name = input;
-            description = lv.getAdapter().getItem(1).toString();
-            for (int i = ingredSID + 1; i < instruSID; i++) {
-                ingredients.add(lv.getAdapter().getItem(i).toString());
-            }
-            for (int i = instruSID + 1; i < lv.getAdapter().getCount(); i++) {
-                instructions.add(lv.getAdapter().getItem(i).toString());
-            }
-        } else if (changePosition == 1) {
-            name = lv.getAdapter().getItem(0).toString();
-            description = input;
-            for (int i = ingredSID + 1; i < instruSID; i++) {
-                ingredients.add(lv.getAdapter().getItem(i).toString());
-            }
-            for (int i = instruSID + 1; i < lv.getAdapter().getCount(); i++) {
-                instructions.add(lv.getAdapter().getItem(i).toString());
-            }
-        } else if (changePosition > ingredSID && changePosition < instruSID) {
-            name = lv.getAdapter().getItem(0).toString();
-            description = lv.getAdapter().getItem(1).toString();
-            for (int i = ingredSID + 1; i < instruSID; i++) {
-                if (i == changePosition) {
-                    ingredients.add(input);
-                } else {
+        if (editType == 1) {
+
+        }
+        else if (editType == 2) {
+            ListView lv = (ListView) findViewById(R.id.editListField);
+            EditText editField = (EditText) findViewById(R.id.editField);
+            input = editField.getText().toString();
+            if (changePosition == 0) {
+                name = input;
+                description = lv.getAdapter().getItem(1).toString();
+                for (int i = ingredSID + 1; i < instruSID; i++) {
                     ingredients.add(lv.getAdapter().getItem(i).toString());
                 }
-            }
-            for (int i = instruSID + 1; i < lv.getAdapter().getCount(); i++) {
-                instructions.add(lv.getAdapter().getItem(i).toString());
-            }
-        } else if (changePosition > instruSID) {
-            name = lv.getAdapter().getItem(0).toString();
-            description = lv.getAdapter().getItem(1).toString();
-            for (int i = ingredSID + 1; i < instruSID; i++) {
-                ingredients.add(lv.getAdapter().getItem(i).toString());
-            }
-            for (int i = instruSID + 1; i < lv.getAdapter().getCount(); i++) {
-                if (i == changePosition) {
-                    instructions.add(input);
-                } else {
+                for (int i = instruSID + 1; i < lv.getAdapter().getCount(); i++) {
                     instructions.add(lv.getAdapter().getItem(i).toString());
                 }
+            } else if (changePosition == 1) {
+                name = lv.getAdapter().getItem(0).toString();
+                description = input;
+                for (int i = ingredSID + 1; i < instruSID; i++) {
+                    ingredients.add(lv.getAdapter().getItem(i).toString());
+                }
+                for (int i = instruSID + 1; i < lv.getAdapter().getCount(); i++) {
+                    instructions.add(lv.getAdapter().getItem(i).toString());
+                }
+            } else if (changePosition > ingredSID && changePosition < instruSID) {
+                name = lv.getAdapter().getItem(0).toString();
+                description = lv.getAdapter().getItem(1).toString();
+                for (int i = ingredSID + 1; i < instruSID; i++) {
+                    if (i == changePosition) {
+                        ingredients.add(input);
+                    } else {
+                        ingredients.add(lv.getAdapter().getItem(i).toString());
+                    }
+                }
+                for (int i = instruSID + 1; i < lv.getAdapter().getCount(); i++) {
+                    instructions.add(lv.getAdapter().getItem(i).toString());
+                }
+            } else if (changePosition > instruSID) {
+                name = lv.getAdapter().getItem(0).toString();
+                description = lv.getAdapter().getItem(1).toString();
+                for (int i = ingredSID + 1; i < instruSID; i++) {
+                    ingredients.add(lv.getAdapter().getItem(i).toString());
+                }
+                for (int i = instruSID + 1; i < lv.getAdapter().getCount(); i++) {
+                    if (i == changePosition) {
+                        instructions.add(input);
+                    } else {
+                        instructions.add(lv.getAdapter().getItem(i).toString());
+                    }
+                }
             }
-        }
-        //get Database object to perform update method
-        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
+            //get Database object to perform update method
+            DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
 
-        recipeToModify = new Recipe(rID, name, description, ingredients, instructions);
-        repository.editRecipe(recipeToModify);
-        Toast.makeText(getApplicationContext(), "Update to database", Toast.LENGTH_LONG).show();
-        finish();
+            recipeToModify = new Recipe(rID, name, description, ingredients, instructions);
+            repository.editRecipe(recipeToModify);
+            Toast.makeText(getApplicationContext(), "Update to database", Toast.LENGTH_LONG).show();
+            finish();
+        }
+        else if (editType == 3) {
+            EditText editField = (EditText) findViewById(R.id.editField);
+            input = editField.getText().toString();
+            name = input;
+
+            //get Database object to perform update method
+            DBSLInterface repository = ((MyApplication) this.getApplication()).getSLRepository(this);
+
+            shoppingListToAdd = new ShoppingList(name);
+            repository.addShoppingList(shoppingListToAdd);
+            Toast.makeText(getApplicationContext(), "Update to database", Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
 }
