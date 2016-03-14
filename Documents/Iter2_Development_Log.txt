@@ -8,4 +8,6 @@
 3/11/2016 - 4 hours | Wrote backend code for sorting and seperating recipes - Kevin
 3/12/2016 - 2 hours | Wrote gui code for sorting and connected it with backend code - Kevin
 3/12/2016 - 3 hours| worked on shopping list database - Jiqing
-2/13/2016 - 2 hours| worked on edit/add shopping list -Jiqing
+3/13/2016 - 2 hours| worked on edit/add shopping list -Jiqing
+3/13/2016 - 3 hours| research testing issues
+3/14/2016 - 4 hours| worked on testing code and issues
