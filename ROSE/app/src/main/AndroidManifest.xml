@@ -9,7 +9,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".init">
+        <activity android:name=".Presentation.init">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Details"
+            android:name=".Presentation.Details"
             android:label="@string/title_activity_details"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Edit" />
-        <activity android:name=".SLDetails" />
-        <activity android:name=".SortRecipes"></activity>
+        <activity android:name=".Presentation.Edit" />
+        <activity android:name=".Presentation.SLDetails" />
+        <activity android:name=".Presentation.SortRecipes"></activity>
     </application>
 
 </manifest>
