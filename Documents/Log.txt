@@ -372,4 +372,6 @@ Next Meeting: TBD
 
 Handin Notes:
  - Proper project packaging can be found in the RemovingExtras branch. Code complies and works in both this and the Master branch. Code in master is also packaged properly. However, left the stand alone class files in the repository as the newly moved files do not correctly indidcate contributers (do to a github issue being worked around). These files can be deleted but were left in for markers to have refernce 
-
+--------------------------------------------------------------------------------------------------------------------------------------
+3/14/2016 - 3 hours | Iteration 2 wiki - Robben
+3/14/2016 - 3 hours | Iteration 2 architecture drawing - Robben
