@@ -4,3 +4,6 @@
 3/7/2016 - 4 hours | modified stubDB, created Database Interface, and began organizing code into packages - Bryce
 3/9/2016 - 3 hours | created Database and database helper class - Bryce
 3/10/2016 - 6 hours | created MyApplication class, finished integrating Database code into project, quick functionality tests - Bryce
+3/10/2016 - 2 hours | created comparators and started setting up sortRecipes class
+3/11/2016 - 4 hours | Wrote backend code for sorting and seperating recipes
+3/12/2016 - 2 hours | Wrote gui code for sorting and connected it with backend code
