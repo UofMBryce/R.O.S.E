@@ -7,3 +7,5 @@
 3/10/2016 - 2 hours | created comparators and started setting up sortRecipes class - Kevin
 3/11/2016 - 4 hours | Wrote backend code for sorting and seperating recipes - Kevin
 3/12/2016 - 2 hours | Wrote gui code for sorting and connected it with backend code - Kevin
+3/12/2016 - 3 hours| worked on shopping list database - Jiqing
+2/13/2016 - 2 hours| worked on edit/add shopping list -Jiqing
