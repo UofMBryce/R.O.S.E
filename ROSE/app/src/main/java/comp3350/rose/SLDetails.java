@@ -54,7 +54,7 @@ public class SLDetails extends ListActivity {
 
     }
 
-    public void addButton(View view){
+    public void editSLButton(View view){
         Intent myIntent = new Intent(this, Edit.class);
         myIntent.putExtra("editType", 3); //3 corresponds to add to shopping list
         startActivity(myIntent);

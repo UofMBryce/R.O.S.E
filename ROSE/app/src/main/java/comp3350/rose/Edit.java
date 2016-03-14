@@ -37,6 +37,7 @@ public class Edit extends AppCompatActivity {
     int ingredSID = 0, instruSID = 0;
     String input = "";
 
+    int sID = -1;
     ShoppingList shoppingListToAdd;
 
 
@@ -46,7 +47,7 @@ public class Edit extends AppCompatActivity {
         setContentView(R.layout.activity_edit);
         //Get Database in order to acess the arraylist
         DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
-        DBSLInterface slRepository = ((MyApplication) this.getApplication()).getSLRepository(this);
+        final DBSLInterface slRepository = ((MyApplication) this.getApplication()).getSLRepository(this);
 
         editType = getIntent().getIntExtra("editType", 0);
         //editType == 1  will be add recipe
@@ -112,6 +113,19 @@ public class Edit extends AppCompatActivity {
             ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, shoppingDisplay);
             ListView lv = (ListView) findViewById(R.id.editListField);
             lv.setAdapter(myArrayAdapter);
+
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    ListView lv = (ListView) findViewById(R.id.editListField);
+                    EditText editField = (EditText) findViewById(R.id.editField);
+                    changePosition = position;
+
+                    ArrayList<ShoppingList> shoppingLists = slRepository.getShoppingList();
+                    sID = shoppingLists.get(changePosition).getsID();
+                    editField.setText(lv.getItemAtPosition(position).toString());
+                }
+            });
         }
     }
 
@@ -184,8 +198,14 @@ public class Edit extends AppCompatActivity {
             //get Database object to perform update method
             DBSLInterface repository = ((MyApplication) this.getApplication()).getSLRepository(this);
 
-            shoppingListToAdd = new ShoppingList(name);
-            repository.addShoppingList(shoppingListToAdd);
+            if ( sID == -1 ) {
+                shoppingListToAdd = new ShoppingList(name);
+                repository.addShoppingList(shoppingListToAdd);
+            }
+            else {
+                shoppingListToAdd = new ShoppingList(sID, name);
+                repository.editShoppingList(shoppingListToAdd);
+            }
             Toast.makeText(getApplicationContext(), "Update to database", Toast.LENGTH_LONG).show();
             finish();
         }
