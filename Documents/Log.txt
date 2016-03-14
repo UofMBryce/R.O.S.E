@@ -355,7 +355,7 @@ Next Meeting: Monday
         - Make sure everything is functional on the nexus 7 tablet
         - Submit Iteration 2
         
---------------------------------------------------------------------------------------------------------------------------------------
-
-
+-------------------------------------------------------------------------------------------------------------------------------------
+3/12/2016 - worked on shopping list database ( 2 hours ) - Jiqing
+2/13/2016 - worked on edit/add shopping list ( 2hours ) -Jiqing
 
