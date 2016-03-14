@@ -355,5 +355,18 @@ Next Meeting: Monday
         - Make sure everything is functional on the nexus 7 tablet
         - Submit Iteration 2
         
--------------------------------------------------------------------------------------------------------------------------------------
--
+--------------------------------------------------------------------------------------------------------------------------------------
+
+3/14/2016
+- Group Meeting
+	- Bryce, Kevin, Jiqing in attendance 
+	
+- Finshed up documentation for Iter2. 
+- Waiting on Chad and Robben to finish testing and add/delete implementation 
+- Robben wil update wiki 
+- went over planning document -> altered rate recipe story as per user request 
+
+- Handin is at 4:00 p.m.
+
+Next Meeting: TBD 
+
