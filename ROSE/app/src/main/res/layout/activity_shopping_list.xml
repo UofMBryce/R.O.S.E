@@ -21,12 +21,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Item"
+        android:text="Manage"
         android:id="@+id/button2"
         android:layout_alignBottom="@android:id/list"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:onClick="addButton" />
+        android:onClick="editSLButton" />
 
 </RelativeLayout>
