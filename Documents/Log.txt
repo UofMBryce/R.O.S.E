@@ -356,6 +356,4 @@ Next Meeting: Monday
         - Submit Iteration 2
         
 -------------------------------------------------------------------------------------------------------------------------------------
-3/12/2016 - worked on shopping list database ( 2 hours ) - Jiqing
-2/13/2016 - worked on edit/add shopping list ( 2hours ) -Jiqing
-
+-
