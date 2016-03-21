@@ -375,3 +375,25 @@ Handin Notes:
 --------------------------------------------------------------------------------------------------------------------------------------
 3/14/2016 - 3 hours | Iteration 2 wiki - Robben
 3/14/2016 - 3 hours | Iteration 2 architecture drawing - Robben
+
+3/21/2016
+---------
+Group Meeting 
+	- Everybody in attendance 
+- Add/Delete should be done by Wednesday - Robben 
+
+Wednesday -> Client Meeting and Retrospective 
+	-> Distribute developer tasks 
+	-> Go over presentation 
+
+- No longer doing Inventory Things 
+- Removing Serving size conversion 
+
+Big User Stories
+- Ad/Delete (carried over from Iter2)
+- Rate Recipes
+- Search Recipes 
+- Create Menu 
+
+Idea: merge Sort and Search into same activity 
+
