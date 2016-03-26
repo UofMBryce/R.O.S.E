@@ -57,9 +57,12 @@ public class init extends ListActivity {
     }
 
     public void addRecipeButton(View view){
-        Intent myIntent = new Intent(this, Edit.class);
-        myIntent.putExtra("editType", 1); // 1 corresponds to add recipe
-        startActivity(myIntent);
+        startActivity(new Intent(this, AddRecipe.class));
+
+        // Iteration 2:
+        // Intent myIntent = new Intent(this, Edit.class);
+        // myIntent.putExtra("editType", 1); // 1 corresponds to add recipe
+        // startActivity(myIntent);
     }
 
     public void sortButton(View view){
