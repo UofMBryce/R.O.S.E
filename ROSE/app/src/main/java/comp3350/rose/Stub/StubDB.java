@@ -278,7 +278,7 @@ public class StubDB implements DBInterface{
 
     public void addRecipe(Recipe recipe){
         recipes.add(recipe);
-        String result;
+        // String result;
         //result = "Add Completed";
         //Result in place for possible future implementation
     }

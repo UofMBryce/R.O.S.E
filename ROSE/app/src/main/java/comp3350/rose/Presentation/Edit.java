@@ -1,26 +1,21 @@
 package comp3350.rose.Presentation;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TabHost;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import comp3350.rose.Controller.DBSLInterface;
-import comp3350.rose.Database.RecipeDatabase;
-import comp3350.rose.R;
-import comp3350.rose.Stub.StubDB;
-import comp3350.rose.model.Recipe;
 import comp3350.rose.Business.MyApplication;
 import comp3350.rose.Controller.DBInterface;
+import comp3350.rose.Controller.DBSLInterface;
+import comp3350.rose.R;
+import comp3350.rose.model.Recipe;
 import comp3350.rose.model.ShoppingList;
 
 public class Edit extends AppCompatActivity {

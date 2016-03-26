@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="comp3350.rose">
+    package="comp3350.rose" >
 
     <application
         android:name=".Business.MyApplication"
@@ -8,21 +8,21 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".init">
+        android:theme="@style/AppTheme" >
+        <activity android:name=".Presentation.init" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Details"
-            android:label="@string/title_activity_details"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Edit" />
-        <activity android:name=".SLDetails" />
-        <activity android:name=".SortRecipes"></activity>
+        <activity android:name=".Presentation.Details" />
+        <activity android:name=".Presentation.Edit" />
+        <activity android:name=".Presentation.SLDetails" />
+        <activity android:name=".Presentation.SortRecipes" />
+        <activity android:name=".Presentation.AddRecipe" />
+        <activity android:name=".Presentation.AddIngredients" />
+        <activity android:name=".Presentation.AddInstructions" />
     </application>
 
 </manifest>
