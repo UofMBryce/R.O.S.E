@@ -397,3 +397,70 @@ Big User Stories
 
 Idea: merge Sort and Search into same activity 
 
+
+3/23/2016
+------------------------------
+Group Meeting 
+- Everybody in attendance 
+
+Client Meeting 
+	- Went over current release with Client 
+	- Feedback in video 
+	- video will be used in presentation 
+	- If time before presentation, another meeting with client to go over added functionality 
+	
+	
+Iteration 3 
+	- Went over Development Plan 
+	- Changes made: dropped Inventory and Servering Contverter due to lack of time 
+		- changes reflected in Deleopment Plan document 
+	- higher focus on hardening and refactoring current code
+	- also going to improve aesthetics of app per client request
+		-> outlined in user tasks 
+	- Big User Stories for this Iteration:
+		- Search For Recipes
+			- Search for recipe by phrase
+		- Rate Recipes 
+			- assign a numeric rating to recipe
+			- sort recipes by rating 
+		- Daily Food Menu 
+			- add a recipe to breakfast 
+			- add a recipe to lunch
+			- add a recipe to supper
+			* as client suggested, no limitations on which recipe goes in which slot; breakfast for supper is common
+		- Add/Delete Recipe
+			- missed implementation in Iter2, pushed to Iter3
+			- add recipe to DB
+			- remove recipe from DB
+			
+	- Visual Improvements
+		- new homepage that links to each activity 
+		- creation of logo to replace current label
+		- possible splash page
+		- mvoement of buttons to more intuitive positions 
+		- change in colours to red/pink (client says they represent hunger)
+			
+	- outlined development tasks, listed below:
+		- Add/Remove recipe from menu functionality 		- 1 day 	| Bryce
+		- create activity for viewing menu 			- 2 days 	| Bryce
+		- add menu list to DB for persistant storage 		- 1 day 	| Bryce
+		- Add functionality to search by text phrase 		- 2 days	| Jiqing
+		- incorporate search into Sort activity 		- 2 days 	| Jiqing
+		- add rating functionality to recipe 			- 1 day 	| Kevin
+		- Create new landing page for app on startup 		- 2 days 	| Kevin
+		- JUnit and Integration Tests for new functionality  	- 4 Days 	| Chad 
+		- Finishing Add/Delete Implementation			- 2 Days	| Robben
+		- Robotium Testing 					- N/A		| All
+		- Refactoring 						- N/A		| Unassigned 
+		
+	Robotium testing and refactoring will be assigned after presentation is done and focus can be shifted 
+	
+Presentation 
+	- Introduction (2-3 min) - Group will alternate 
+	- Demo (4-5min) - Kevin 
+	- Postmortem (7-9min) - Bryce 
+	-> Go over each section of presentation on Sunday to get timing down 
+
+Retrospective 
+	- completed -> will be used in postmortem discussion in seminar 
+	- summary writeup will be added to project 
