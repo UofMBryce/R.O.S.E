@@ -29,6 +29,20 @@
         android:id="@+id/clearIngredientList"
         android:onClick="clearIngredientsList" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save List"
+        android:id="@+id/saveIngredientsList"
+        android:onClick="saveIngredientsList" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/IngredientsCancel"
+        android:onClick="cancelIngredientsButton" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

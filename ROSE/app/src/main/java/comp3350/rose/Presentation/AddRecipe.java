@@ -6,28 +6,49 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 import comp3350.rose.Business.MyApplication;
 import comp3350.rose.Controller.DBInterface;
 import comp3350.rose.R;
 import comp3350.rose.model.Recipe;
 
 public class AddRecipe extends AppCompatActivity {
+    ArrayList<String> ingredientsList = new ArrayList<>();
+    ArrayList<String> instructionsList = new ArrayList<>();
+    static final int ADD_INGREDIENTS_REQUEST = 1;
+    static final int ADD_INSTRUCTIONS_REQUEST = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
     }
 
-    protected void onResume(){
-        super.onResume();
-    }
-
     public void addIngredientsButton(View view){
-        startActivity(new Intent(this, AddIngredients.class));
+        Intent myIntent = new Intent(this, AddIngredients.class);
+        myIntent.putStringArrayListExtra("IngredientsList", ingredientsList);
+        startActivityForResult(myIntent, ADD_INGREDIENTS_REQUEST);
     }
 
     public void addInstructionsButton(View view){
-        startActivity(new Intent(this, AddInstructions.class));
+        Intent myIntent = new Intent(this, AddInstructions.class);
+        myIntent.putStringArrayListExtra("InstructionsList", instructionsList);
+        startActivityForResult(myIntent, ADD_INSTRUCTIONS_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if (requestCode == ADD_INGREDIENTS_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                ingredientsList = data.getStringArrayListExtra("IngredientsResult");
+            }
+        }
+        else if (requestCode == ADD_INSTRUCTIONS_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                instructionsList = data.getStringArrayListExtra("InstructionsResult");
+            }
+        }
     }
 
     public void SaveRecipeButton (View view) {
@@ -42,6 +63,8 @@ public class AddRecipe extends AppCompatActivity {
         myRecipe.setName(recipeName);
         myRecipe.setDescription(recipeDesc);
         myRecipe.setMealType(recipeMealType);
+        myRecipe.setIngredients(ingredientsList);
+        myRecipe.setDirections(instructionsList);
         myRecipe.setNotes(recipeNotes);
 
         // obtain access to DB and insert recipe
@@ -50,7 +73,7 @@ public class AddRecipe extends AppCompatActivity {
         finish();
     }
 
-    public void CancelButton(View view){
+    public void CancelRecipesButton(View view){
         finish();
     }
 }
