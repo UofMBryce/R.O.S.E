@@ -2,4 +2,7 @@
     <string name="app_name">ROSE</string>
     <string name="title_activity_details">Details</string>
     <string name="title_activity_sort_recipes">SortRecipes</string>
+    <string name="title_activity_add_recipe">AddRecipe</string>
+    <string name="title_activity_add_ingredients">AddIngredients</string>
+    <string name="title_activity_add_instructions">AddInstructions</string>
 </resources>
