@@ -16,6 +16,7 @@ import comp3350.rose.model.Recipe;
 public class AddRecipe extends AppCompatActivity {
     ArrayList<String> ingredientsList = new ArrayList<>();
     ArrayList<String> instructionsList = new ArrayList<>();
+    ArrayList<Recipe> updatedSortedList = new ArrayList<>();
     static final int ADD_INGREDIENTS_REQUEST = 1;
     static final int ADD_INSTRUCTIONS_REQUEST = 2;
 
@@ -58,6 +59,12 @@ public class AddRecipe extends AppCompatActivity {
         String recipeMealType = ((EditText)findViewById(R.id.recipeMealTypeText)).getText().toString();
         String recipeNotes = ((EditText)findViewById(R.id.recipeNotesText)).getText().toString();
 
+        //Capitalize recipe name for proper sorting
+        recipeName = recipeName.substring(0, 1).toUpperCase() + recipeName.substring(1);
+
+        //Capitalize meal type for proper sorting(should probably change meal type input to a drop box eventually)
+        recipeMealType = recipeMealType.substring(0, 1).toUpperCase() + recipeMealType.substring(1);
+
         // create new recipe object and insert new data
         Recipe myRecipe = new Recipe();
         myRecipe.setName(recipeName);
@@ -67,10 +74,13 @@ public class AddRecipe extends AppCompatActivity {
         myRecipe.setDirections(instructionsList);
         myRecipe.setNotes(recipeNotes);
 
+
         // obtain access to DB and insert recipe
         DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
         repository.addRecipe(myRecipe);
-        finish();
+
+        this.finish();
+
     }
 
     public void CancelRecipesButton(View view){

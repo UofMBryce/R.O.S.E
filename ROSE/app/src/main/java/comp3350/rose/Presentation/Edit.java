@@ -56,16 +56,16 @@ public class Edit extends AppCompatActivity {
         }
         else if(editType == 2){ //Modify Recipe
             recipePosition = getIntent().getIntExtra("recipePosition", 0);
-            Recipe recipeToModify = repository.getList().get(recipePosition);
+            Recipe recipeToModify = ((MyApplication) this.getApplication()).getSortedRecipes().get(recipePosition);
             rID = recipeToModify.getrID();
             ArrayList<String> recipeDetails = new ArrayList<>();
             recipeDetails.add(recipeToModify.getName());
             recipeDetails.add(recipeToModify.getDescription());
-            recipeDetails.add("Ingredients:");
+            recipeDetails.add("----------Ingredients:");
             for(int i=0; i<recipeToModify.getIngredients().size(); i++){
                 recipeDetails.add(recipeToModify.getIngredients().get(i));
             }
-            recipeDetails.add("Instructions:");
+            recipeDetails.add("----------Instructions:");
             for(int i=0; i<recipeToModify.getDirections().size(); i++){
                 recipeDetails.add(recipeToModify.getDirections().get(i));
             }

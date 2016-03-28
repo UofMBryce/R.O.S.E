@@ -27,13 +27,13 @@ public class MyApplication extends Application {
     //Used to Change the repository type for the entire application
     private ArrayList<Recipe> sortedRecipes = new ArrayList<>();
 
-    public ArrayList<Recipe> getSortedRecipes(){
-        return sortedRecipes;
-    }
+    public ArrayList<Recipe> getSortedRecipes(){ return sortedRecipes; }
 
     public void setSortedRecipes(ArrayList<Recipe> recipes){
         sortedRecipes = recipes;
     }
+
+    public void addToSortedRecipes(Recipe newRecipe){ sortedRecipes.add(newRecipe); }
 
     public DBInterface getRepository(Context context) {
         //DBInterface repository = RecipeDatabase.getInstance(context);
