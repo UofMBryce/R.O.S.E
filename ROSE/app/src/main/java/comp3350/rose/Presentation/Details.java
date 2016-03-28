@@ -61,11 +61,11 @@ public class Details extends ListActivity {
         ArrayList<String> recipeDetails = new ArrayList<>();
         recipeDetails.add(clickedRecipe.getName());
         recipeDetails.add(clickedRecipe.getDescription());
-        recipeDetails.add("Ingredients:");
+        recipeDetails.add("----------Ingredients:");
         for(int i=0; i<clickedRecipe.getIngredients().size(); i++){
             recipeDetails.add(clickedRecipe.getIngredients().get(i));
         }
-        recipeDetails.add("Instructions:");
+        recipeDetails.add("----------Instructions:");
         for(int i=0; i<clickedRecipe.getDirections().size(); i++){
             recipeDetails.add(clickedRecipe.getDirections().get(i));
         }
