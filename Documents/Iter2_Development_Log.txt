@@ -12,3 +12,6 @@
 3/13/2016 - 3 hours| research testing issues
 3/14/2016 - 4 hours| worked on testing code and issues
 3/14/2016 - 3 hours | Add/Delete Recipe coding (still working on) - Robben
+3/26/2016 - 2 hours | Made a title page to help ease navigation - Kevin
+3/27/2016 - 3 hours | Refactored layouts for improved usability - Kevin
+3/28/2016 - 2 hours | Fixed some integration issues and a partial editRecipe bug fix
