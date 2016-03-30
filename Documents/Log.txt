@@ -464,3 +464,19 @@ Presentation
 Retrospective 
 	- completed -> will be used in postmortem discussion in seminar 
 	- summary writeup will be added to project 
+	
+
+3/30/2016
+---------------
+Group Meeting 
+	- Bryce, Chad, Kevin, Jiqing in attendance 
+		- Robben has doctor appointment 
+		
+Soft deadline of Monday, April 4th for all functionality 
+	- then Chad has all he needs for writing testing 
+
+Monday: Assign big user stories for robotium testing 
+
+Possibility of moving meeting rooms for Monday 
+
+Next Meeting on Monday
