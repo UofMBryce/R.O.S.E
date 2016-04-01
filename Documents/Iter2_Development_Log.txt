@@ -20,6 +20,7 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 3/26/2016 - 2 hours | Made a title page to help ease navigation - Kevin
 3/27/2016 - 3 hours | Refactored layouts for improved usability - Kevin
+3/27/2016 - 12 hours | Add Recipe functionality - Robben
 3/28/2016 - 2 hours | Fixed some integration issues and a partial editRecipe bug fix - Kevin
 3/30/2016 - 4 hours | Implemented Menu feature- Bryce 
-3/31/2016 - 3 hours | continued implementing menu feature, tweaked UI, refactored a couple long methods - Bryce 
+3/31/2016 - 3 hours | continued implementing menu feature, tweaked UI, refactored a couple long methods - Bryce
