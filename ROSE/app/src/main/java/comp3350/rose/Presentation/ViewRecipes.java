@@ -4,6 +4,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -21,7 +22,7 @@ public class ViewRecipes extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_recipes);
-        //Get Database to have access to arraylist of stored recipes
+
         DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
 
         ArrayList<Recipe> recipes = repository.getList();
@@ -34,6 +35,7 @@ public class ViewRecipes extends ListActivity {
         ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeDisplay);
         lv = this.getListView();
         lv.setAdapter(myArrayAdapter);
+
     }
 
     @Override
@@ -51,6 +53,7 @@ public class ViewRecipes extends ListActivity {
         myIntent.putExtra("recipePosition", pos);
         startActivity(myIntent);
     }
+
 
     public void shoppingListButton(View view){
         startActivity(new Intent(this, SLDetails.class));

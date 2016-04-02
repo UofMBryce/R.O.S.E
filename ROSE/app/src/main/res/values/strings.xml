@@ -5,4 +5,5 @@
     <string name="title_activity_add_recipe">AddRecipe</string>
     <string name="title_activity_add_ingredients">AddIngredients</string>
     <string name="title_activity_add_instructions">AddInstructions</string>
+    <string name="title_activity_menu_viewer">MenuViewer</string>
 </resources>

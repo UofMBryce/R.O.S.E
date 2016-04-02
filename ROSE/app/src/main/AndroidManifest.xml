@@ -23,7 +23,11 @@
         <activity android:name=".Presentation.AddRecipe" />
         <activity android:name=".Presentation.AddIngredients" />
         <activity android:name=".Presentation.AddInstructions" />
-        <activity android:name=".Presentation.ViewRecipes"></activity>
+        <activity android:name=".Presentation.ViewRecipes" />
+        <activity
+            android:name=".Presentation.MenuViewer"
+            android:label="@string/title_activity_menu_viewer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

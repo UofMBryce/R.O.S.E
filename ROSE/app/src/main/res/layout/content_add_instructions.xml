@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#dc4b88">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Enter Recipe Instruction:"
-        android:id="@+id/recipeInstruction" />
+        android:id="@+id/recipeInstruction"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recipeInstructionText" />
+        android:layout_height="35dp"
+        android:id="@+id/recipeInstructionText"
+        android:background="#ccdd6b9b" />
 
     <Button
         android:layout_width="match_parent"
@@ -44,7 +48,9 @@
         android:onClick="cancelInstructionsButton" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recipeInstructionsListView" />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/recipeInstructionsListView"
+        android:layout_margin="20dp"
+        android:background="#ccdd6b9b" />
 </LinearLayout>

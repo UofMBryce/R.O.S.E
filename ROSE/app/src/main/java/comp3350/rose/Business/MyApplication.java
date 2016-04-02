@@ -14,12 +14,15 @@ import android.content.Context;
 import java.util.ArrayList;
 
 import comp3350.rose.Controller.DBSLInterface;
+import comp3350.rose.Controller.MenuInterface;
+import comp3350.rose.Database.MenuDatabase;
 import comp3350.rose.Database.RecipeDatabase;
 import comp3350.rose.Controller.DBInterface;
 import comp3350.rose.Database.ShoppingListDatabase;
 import comp3350.rose.Database.dbSLHelper;
 import comp3350.rose.Stub.StubDB;
 import comp3350.rose.Stub.StubSLDB;
+import comp3350.rose.Stub.StubMenu;
 import comp3350.rose.model.Recipe;
 import comp3350.rose.model.ShoppingList;
 
@@ -42,9 +45,15 @@ public class MyApplication extends Application {
     }
 
     public DBSLInterface getSLRepository(Context context) {
-//        DBSLInterface repository = ShoppingListDatabase.getInstance(context);
+        //DBSLInterface repository = ShoppingListDatabase.getInstance(context);
         DBSLInterface repository = StubSLDB.getInstance(context);
         return repository;
+    }
+
+    public MenuInterface getMenu(Context context) {
+        MenuInterface menu = MenuDatabase.getInstance(context);
+        //MenuInterface menu = StubMenu.getInstance(context);
+        return menu;
     }
 
 

@@ -7,14 +7,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="comp3350.rose.details">
+    tools:context="comp3350.rose.details"
+    android:background="#ebcc5178">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="RECIPE DETAILS"
-        android:textColor="#EF597B"
+        android:textColor="#ede2e2"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -27,23 +28,44 @@
         android:id="@android:id/list"
         android:layout_above="@+id/controls"
         android:layout_below="@+id/textView"
-        android:clickable="false" />
+        android:clickable="false"
+        android:background="#e1cc829a" />
 
     <LinearLayout
         android:id="@+id/controls"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_alignParentBottom= "true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#cc5178">
 
-    <View
+        <Spinner
+            android:layout_width="105dp"
+            android:layout_height="match_parent"
+            android:id="@+id/menuSpinner"
+            android:spinnerMode="dropdown"
+            android:layout_weight="0.61" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:text="Add to Menu"
+            android:id="@+id/addMenu"
+            android:layout_weight="0.39"
+            android:onClick="addMenu" />
+
+        <View
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"
         />
 
-    <View
+        <View
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_weight="1"

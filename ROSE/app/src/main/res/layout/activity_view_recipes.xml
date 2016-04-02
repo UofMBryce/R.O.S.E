@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="comp3350.rose.init">
+    tools:context="comp3350.rose.init"
+    android:background="#f54f4f">
 
     <ListView
         android:layout_width="wrap_content"
@@ -19,7 +20,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:longClickable="true"
+        android:background="#def39595" />
 
 
     <TextView
@@ -27,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="RECIPES"
-        android:textColor="#EF597B"
+        android:textColor="#000000"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -40,7 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_alignParentBottom= "true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#def39595">
 
     <Button
         style="?android:attr/buttonStyleSmall"

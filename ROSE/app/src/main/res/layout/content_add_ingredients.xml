@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#dc4b88">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Enter Recipe Ingredient:"
-        android:id="@+id/recipeIngredient" />
+        android:id="@+id/recipeIngredient"
+        android:textColor="#ede2e2"
+        android:textStyle="bold" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recipeIngredientText" />
+        android:layout_height="35dp"
+        android:id="@+id/recipeIngredientText"
+        android:background="#ccdd6b9b" />
 
     <Button
         android:layout_width="match_parent"
@@ -44,8 +48,13 @@
         android:onClick="cancelIngredientsButton" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/recipeIngredientsListView" />
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/recipeIngredientsListView"
+        android:background="#ccdd6b9b"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
 
 </LinearLayout>

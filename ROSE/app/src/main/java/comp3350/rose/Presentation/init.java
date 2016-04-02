@@ -17,7 +17,8 @@ public class init extends AppCompatActivity {
     }
 
     public void menuButton(View view){
-        Toast.makeText(getApplicationContext(), "Currently in Development.", Toast.LENGTH_LONG).show();
+        Intent myIntent = new Intent(this, MenuViewer.class);
+        startActivity(myIntent);
     }
 
     public void viewRecipesButton(View view){

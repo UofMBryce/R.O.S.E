@@ -237,7 +237,18 @@ public class Recipe {
     // TODO: Write Method
     // Leaving in for now; may not be necessary
     public void copy(Recipe newRecipe){
-
+        this.rID = newRecipe.getrID();
+        this.name = newRecipe.getName();
+        this.description = newRecipe.getDescription();
+        this.mealType = newRecipe.getMealType();
+        this.mainIngredient = newRecipe.getMainIngredient();
+        this.cooktime = newRecipe.getCooktime();
+        for(String p : newRecipe.getIngredients())
+            this.ingredients.add(p);
+        for(String p : newRecipe.getDirections())
+            this.directions.add(p);
+        this.notes = newRecipe.getNotes();
+        this.rating = newRecipe.getRating();
     }
 
     public void print() {
