@@ -480,3 +480,18 @@ Monday: Assign big user stories for robotium testing
 Possibility of moving meeting rooms for Monday 
 
 Next Meeting on Monday
+
+4/4/2016
+------------
+Group Meeting 
+	- All in attendance 
+	
+All funcitonality should be done by Wednesday 
+	- waiting on AddRating and Delete 
+	
+- Will post list of big user stories on repo that need to be Robotium tested
+
+- Refactoring: going to focus on the Iter2 feedback first -> shortening some methods in edit and sort 
+
+Next meeting: Wednesday in the Science and Technologies library 
+	
