@@ -327,6 +327,21 @@ public class StubDB implements DBInterface{
         return recipes;
     }
 
+    @Override
+    public ArrayList<Recipe> getList(String input)
+    {
+        ArrayList<Recipe> result = new ArrayList<Recipe>();
 
+        for (int i = 0; i < recipes.size(); i++)
+        {
+            if ( recipes.get(i).getMainIngredient() != null) {
+                if (recipes.get(i).getMainIngredient().compareTo(input) == 0) {
+                    result.add(recipes.get(i));
+                }
+            }
+        }
+
+        return result;
+    }
 
 }

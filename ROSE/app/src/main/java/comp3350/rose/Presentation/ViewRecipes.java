@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,18 +19,36 @@ import comp3350.rose.model.Recipe;
 public class ViewRecipes extends ListActivity {
 
     ListView lv;
+    int viewType = 0;
+    String searchField = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_recipes);
 
-        DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
-
-        ArrayList<Recipe> recipes = repository.getList();
-        ((MyApplication)this.getApplication()).setSortedRecipes(recipes); //initialize sortedRecipes to full recipe list
         ArrayList<String> recipeDisplay = new ArrayList<>();
-        for(int i=0; i<recipes.size(); i++) {
-            recipeDisplay.add(recipes.get(i).getName());
+        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
+
+        viewType = getIntent().getIntExtra("ViewType", 0);
+
+        if (viewType == 1) {
+            ArrayList<Recipe> recipes = repository.getList();
+            ((MyApplication) this.getApplication()).setSortedRecipes(recipes); //initialize sortedRecipes to full recipe list
+            for (int i = 0; i < recipes.size(); i++) {
+                recipeDisplay.add(recipes.get(i).getName());
+            }
+        }
+        else if (viewType == 2) {
+            searchField = getIntent().getStringExtra("SearchField");
+
+            Toast.makeText(getApplicationContext(), searchField, Toast.LENGTH_LONG).show();
+
+            ArrayList<Recipe> recipes = repository.getList(searchField);
+            ((MyApplication) this.getApplication()).setSortedRecipes(recipes);
+            for (int i = 0; i < recipes.size(); i++) {
+                recipeDisplay.add(recipes.get(i).getName());
+            }
         }
 
         ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, recipeDisplay);
