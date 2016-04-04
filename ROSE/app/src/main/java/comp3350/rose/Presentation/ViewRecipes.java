@@ -42,7 +42,7 @@ public class ViewRecipes extends ListActivity {
         else if (viewType == 2) {
             searchField = getIntent().getStringExtra("SearchField");
 
-            Toast.makeText(getApplicationContext(), searchField, Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), searchField, Toast.LENGTH_LONG).show();
 
             ArrayList<Recipe> recipes = repository.getList(searchField);
             ((MyApplication) this.getApplication()).setSortedRecipes(recipes);
