@@ -1,4 +1,18 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------        Iteration 1        -------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+2/11/2016 - 2 hours | Worked on Recipe Object Class - Bryce
+2/11/2016 - 2 hours | Worked on stub database - Bryce
+2/14/2016 - 3 hours | Worked on stub database - Bryce
+2/15/2016 - 2 hours | Added to stub database/recipe classes and worked on initial activity - Kevin
+2/15/2016 - 2 hours | Worked on shopping list activity and detail activity - Kevin
+2/16/2016 - 3 hours | Connected all activities and linked them to stubDB - Kevin
+2/16/2016 - 1 hours | Started setting up Edit activity and connected it to other activities - Kevin
+2/21/2016 - 3 hours | Added Edit exist recipe function - Jiqing
+2/22/2016 - 5 hours | Created/Added the 'Software Architecture' and 'Wiki' documentation - Robben
+2/22/2016 - 1 hours | Successful test of ROSE application on Nexus 7 - Robben
+2/22/2016 - 5 hours | Added Unit Test Code for Application - Chad
+-----------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------        Iteration 2        -------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------
 3/3/2016 - 2 hours | research (spike) - Bryce
