@@ -24,6 +24,7 @@ public class Details extends ListActivity {
     ListView lv;
     Recipe clickedRecipe;
     int menuPos = 0;
+    int ratingPos = 0;
     MenuInterface menu;
 
 
@@ -34,6 +35,7 @@ public class Details extends ListActivity {
         menu = ((MyApplication)this.getApplication()).getMenu(this);
         refreshList();
 
+        //----------------------------------------Menu Setup---------------------------------------
         String[] menuOptions = new String[]{"Add to...", "Breakfast", "Lunch", "Supper"};
         Spinner menuSpinner = (Spinner) findViewById(R.id.menuSpinner);
         ArrayAdapter<String> menuadapter = new ArrayAdapter<>(this,
@@ -43,6 +45,23 @@ public class Details extends ListActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 menuPos = parent.getSelectedItemPosition();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        //--------------------------------------Rating Setup----------------------------------------
+        String[] ratingOptions = new String[]{"0", "1", "2", "3", "4", "5"};
+        Spinner ratingSpinner = (Spinner) findViewById(R.id.ratingSpinner);
+        ArrayAdapter<String> ratingAdapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, ratingOptions);
+        ratingSpinner.setAdapter(ratingAdapter);
+        ratingSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ratingPos = parent.getSelectedItemPosition();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -109,5 +128,12 @@ public class Details extends ListActivity {
             menu.addSupper(clickedRecipe.getName());
             Toast.makeText(getApplicationContext(), "Added Supper", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void addRating(View view){
+        clickedRecipe.setRating(ratingPos);
+        DBInterface repository = ((MyApplication) this.getApplication()).getRepository(this);
+        repository.editRecipe(clickedRecipe);
+        Toast.makeText(getApplicationContext(), "Rating Accepted!", Toast.LENGTH_LONG).show();
     }
 }
