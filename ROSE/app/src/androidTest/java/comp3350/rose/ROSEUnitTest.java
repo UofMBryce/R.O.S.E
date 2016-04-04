@@ -1,34 +1,23 @@
 package comp3350.rose;
 
 import android.app.ListActivity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 
 import comp3350.rose.Business.MyApplication;
 import comp3350.rose.Controller.DBInterface;
 import comp3350.rose.model.Recipe;
-import comp3350.rose.Stub.StubDB;
 
 import java.util.ArrayList;
 
-import dalvik.annotation.TestTargetClass;
 import static org.junit.Assert.*;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
 public class ROSEUnitTest extends ListActivity {
-    Recipe rec;
-    Edit changer;
-    ShoppingList shopper;
 
     private static MyApplication myApp = (MyApplication)new init().getApplication();
     private static DBInterface repository = myApp.getRepository(myApp);
@@ -75,7 +64,7 @@ public class ROSEUnitTest extends ListActivity {
     }
 
     @Test
-    protected void initTest(Bundle savedInstanceState) {
+    protected void initTest() {
         init initializer = new init();
 
         ListView initListView = initializer.lv;
@@ -116,7 +105,7 @@ public class ROSEUnitTest extends ListActivity {
     }
 
     @Test
-    protected void DetailsTest(Bundle savedInstanceState) {
+    protected void DetailsTest() {
         Details dets = new Details();
 
         ListView detListView = dets.lv;
@@ -131,12 +120,54 @@ public class ROSEUnitTest extends ListActivity {
 
     @Test
     protected void EditTest() {
+        Edit changer = new Edit();
 
-        
+        int recPos = changer.recipePosition;
+        int EType = changer.editType;
+        int recID = changer.rID;
+
+        Recipe rec2Mod = changer.recipeToModify;
+
+        int changePos = changer.changePosition;
+        int ingrSID = changer.ingredSID;
+        int instSID = changer.instruSID;
+
+        int temp_int = 0;
+
+        assertEquals("Recipe Position is not a valid Recipe in the Database.", recPos, temp_int);
+        assertEquals("Edit operation is not a valid operation.", EType, temp_int);
+        assertEquals("Recipe ID is not a valid recipe ID.", recID, temp_int);
+        assertEquals("Clicked Recipe is not a valid Recipe.", rec2Mod, temp_Recipe);
+        assertEquals("Change Position is not a valid Position.", changePos, temp_int);
+        assertEquals("Ingredient ID is not a valid ingredient ID.", ingrSID, temp_int);
+        assertEquals("Instruction ID is not a valid instruction ID.", instSID, temp_int);
 
     }
 
-    @After
+    @Test
+    protected void ShoppingListTest() {
+
+        // No Variables to test
+
+    }
+
+    @Test
+    protected void SortRecipesTest() {
+        SortRecipes sort = new SortRecipes();
+
+        int mealPos = sort.mealTypePos;
+        int sortPos = sort.sortTypePos;
+        int ingredPos = sort.mainIngredientPos;
+
+        int temp_int = 0;
+
+        assertEquals("Meal Type Position is not a valid Position.", mealPos, temp_int);
+        assertEquals("Sort Type Position is not a valid Position.", sortPos, temp_int);
+        assertEquals("Main Ingredient Position is not a valid Position.", ingredPos, temp_int);
+
+    }
+
+    @AfterClass
     public static void tearDownClass() throws Exception {
         // No Cleanup Necessary
     }
