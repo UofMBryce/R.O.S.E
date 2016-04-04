@@ -38,4 +38,4 @@
 3/28/2016 - 2 hours | Fixed some integration issues and a partial editRecipe bug fix - Kevin
 3/30/2016 - 4 hours | Implemented Menu feature- Bryce 
 3/31/2016 - 3 hours | continued implementing menu feature, tweaked UI, refactored a couple long methods - Bryce
-4/04/2016 - 1 hour  | Add rating functionality
+4/04/2016 - 1 hour  | Add rating functionality - Kevin
