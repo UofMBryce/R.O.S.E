@@ -10,14 +10,13 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import comp3350.rose.Business.MyApplication;
+import comp3350.rose.Controller.DBInterface;
 import comp3350.rose.Controller.MenuInterface;
 import comp3350.rose.R;
 import comp3350.rose.model.Recipe;
-import comp3350.rose.Controller.DBInterface;
-import comp3350.rose.Business.MyApplication;
-import comp3350.rose.Stub.StubMenu;
-
-import java.util.ArrayList;
 
 public class Details extends ListActivity {
     int recipePosition = 0;
@@ -99,6 +98,13 @@ public class Details extends ListActivity {
         lv = this.getListView();
         lv.setAdapter(myArrayAdapter);
 
+    }
+
+    public void deleteButton(View view) {
+        // obtain access to DB and delete recipe
+        DBInterface repository = ((MyApplication)this.getApplication()).getRepository(this);
+        repository.deleteRecipe(clickedRecipe);
+        this.finish();
     }
 
     public void editButton(View view){
