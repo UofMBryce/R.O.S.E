@@ -494,4 +494,17 @@ All funcitonality should be done by Wednesday
 - Refactoring: going to focus on the Iter2 feedback first -> shortening some methods in edit and sort 
 
 Next meeting: Wednesday in the Science and Technologies library 
+
+4/6/2016
+------------
+Group Meeting 
+	- All in attendance 
 	
+	Robotium Tests 
+		- all tests listed as issues in repository 
+	Refactoring 
+		- Kevin will do write up on GUI refactoring 
+		- Bryce will refactor Edit class 
+		- Jiqing will refactor SortRecipes 
+		
+	Robben will double check application still runs on Nexus 7 device (not sure what APK device is running)
