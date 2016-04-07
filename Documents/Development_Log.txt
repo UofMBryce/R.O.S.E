@@ -40,3 +40,5 @@
 3/31/2016 - 3 hours | continued implementing menu feature, tweaked UI, refactored a couple long methods - Bryce
 4/04/2016 - 1 hour  | Add rating functionality - Kevin
 4/05/2016 - 2 hours | Delete Recipe functionality - Robben
+4/07/2016 - 2 hours | Wrote first batch of Robotium tests - Bryce 
+4/07/2016 - 1 hour  | Refactored Edit.java. writeup can be found in RefactoringWriteup document - Bryce
