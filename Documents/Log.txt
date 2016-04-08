@@ -508,3 +508,14 @@ Group Meeting
 		- Jiqing will refactor SortRecipes 
 		
 	Robben will double check application still runs on Nexus 7 device (not sure what APK device is running)
+
+
+4/8/2016
+------------
+Group Meeting 
+	- Bryce, Chad, Kevin in attendance 
+	
+	- Went over how to use Robotium 
+	- discussed issues in Unit tests 
+	
+No More Meetings scheduled 
