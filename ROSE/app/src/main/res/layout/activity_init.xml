@@ -7,57 +7,71 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/roseimg"
         tools:context="comp3350.rose.init">
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@android:id/list"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:clickable="false" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Rose"
+        android:id="@+id/imageView"
+        android:src="@drawable/rosetext"
+        android:layout_alignParentTop="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="R.O.S.E"
-        android:textColor="#EF597B"
-        android:textSize="30sp"
-        android:paddingRight="16dp"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"/>
+        android:weightSum="1"
+        android:id="@+id/search_controls"
+        android:layout_alignParentTop="true">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Shopping List"
-        android:id="@+id/button"
-        android:layout_alignBottom="@android:id/list"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:onClick="shoppingListButton" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_field"
+            android:layout_weight="1.00" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Recipe"
-        android:id="@+id/button3"
-        android:layout_above="@+id/button"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="addRecipeButton"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SEARCH"
+            android:id="@+id/search_button"
+            android:onClick="searchButton" />
+    </LinearLayout>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/title_controls"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SORT"
-        android:id="@+id/button5"
-        android:layout_above="@+id/button3"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="sortButton"/>
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_alignParentBottom= "true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/menu_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="menuButton"
+            android:text="MENU" />
+
+        <Button
+            android:id="@+id/recipe_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="viewRecipesButton"
+            android:text="RECIPES" />
+
+        <Button
+            android:id="@+id/shopping_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="viewShoppingListButton"
+            android:text="SHOP LIST" />
+
+    </LinearLayout>
+
 </RelativeLayout>

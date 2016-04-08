@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="comp3350.rose.Edit">
+    tools:context="comp3350.rose.Edit"
+    android:background="#ebcc5178">
 
     <ListView
         android:layout_width="wrap_content"
@@ -16,17 +17,19 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/editField" />
+        android:layout_above="@+id/editField"
+        android:background="#e1cc829a" />
 
     <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:id="@+id/editField"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/saveButton"
-        android:layout_toStartOf="@+id/saveButton" />
+        android:layout_toStartOf="@+id/saveButton"
+        android:background="#ebcc5178" />
 
     <Button
         style="?android:attr/buttonStyleSmall"

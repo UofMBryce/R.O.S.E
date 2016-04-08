@@ -25,22 +25,32 @@ public class Recipe {
     static int rID_Counter = 1;
     private int rID;
     private String name;
+    private String description;
     private String mealType;
     private String mainIngredient;
-    private int rating;
-    private String description;
+    private int cooktime;
     private ArrayList<String> ingredients;
     private ArrayList<String> directions;
-    private int cooktime;
     private String notes;
+    private int rating;
 
     public Recipe()
-    { //Null Constructor
-        rID = rID_Counter++;
-        ingredients = null;
-        directions = null;
-        name = null;
-        description = null;
+    { // Null Constructor
+        ArrayList<String> emptyList1 = new ArrayList<>();
+        ArrayList<String> emptyList2 = new ArrayList<>();
+        emptyList1.add("");
+        emptyList2.add("");
+
+        this.rID = rID_Counter++;
+        this.name = "";
+        this.description = "";
+        this.mealType = "";
+        this.mainIngredient = "";
+        this.cooktime = 0;
+        this.ingredients = emptyList1;
+        this.directions = emptyList2;
+        this.notes = "";
+        this.rating = 0;
     }
 
     public Recipe(String name, String description, ArrayList<String> ingredients, ArrayList<String> directions)
@@ -227,7 +237,18 @@ public class Recipe {
     // TODO: Write Method
     // Leaving in for now; may not be necessary
     public void copy(Recipe newRecipe){
-
+        this.rID = newRecipe.getrID();
+        this.name = newRecipe.getName();
+        this.description = newRecipe.getDescription();
+        this.mealType = newRecipe.getMealType();
+        this.mainIngredient = newRecipe.getMainIngredient();
+        this.cooktime = newRecipe.getCooktime();
+        for(String p : newRecipe.getIngredients())
+            this.ingredients.add(p);
+        for(String p : newRecipe.getDirections())
+            this.directions.add(p);
+        this.notes = newRecipe.getNotes();
+        this.rating = newRecipe.getRating();
     }
 
     public void print() {

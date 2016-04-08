@@ -1,0 +1,26 @@
+Planning Document (Revised)
+
+Iteration 1
+	- View recipe database 
+	- modify recipe database
+		-  edit recipes
+	- view shopping list 
+	- Stub Database
+
+Iteration 2
+	- Sort Recipes
+		- by meal type, main ingredient, rating, etc
+	- Modify Shopping List 
+	- Full Database
+
+Iteration 3
+	- add and delete recipes 
+	- Rate Recipes 
+	- Create food menu 
+	- search recipes
+	- application aesthetics 
+	
+Discarded
+	- add serving size conversion system 
+	- view kitchen inventory 
+	- modify kitchen inventory 

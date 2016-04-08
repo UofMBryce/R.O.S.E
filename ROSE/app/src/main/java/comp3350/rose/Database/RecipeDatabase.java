@@ -93,6 +93,7 @@ public class RecipeDatabase extends Activity implements DBInterface {
         db.close();
     }
 
+    @Override
     public ArrayList<Recipe> getList()
     {//Returns ArrayList for listview activities
         ArrayList<Recipe> result = new ArrayList<>();
@@ -135,6 +136,60 @@ public class RecipeDatabase extends Activity implements DBInterface {
                 //Create new Recipe from Row
                 Recipe tempRecipe = new Recipe(rID, name, description, mealType, mainIngredient,
                 rating, cooktime, notes, ingredients, directions);
+                //Add the recipe to the ArrayList
+                result.add(tempRecipe);
+
+            }while (cursor.moveToNext());
+        }
+        //Return the populated ArrayList for use
+        return result;
+    }
+
+    @Override
+    public ArrayList<Recipe> getList(String input)
+    {
+        //Returns search result (ArrayList) for listview activities
+        ArrayList<Recipe> result = new ArrayList<>();
+
+        SQLiteDatabase db = Helper.getReadableDatabase();
+
+        String selectQuery = ("SELECT * FROM " + Recipe.TABLE + "Where " + Recipe.KEY_mainingredient
+                            + " = '" + input + "' Or " + Recipe.KEY_name + " = '" + input + "'");
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        if(cursor.moveToFirst()) {
+            do {
+                ArrayList<String> ingredients = new ArrayList<>(); // Temp Storage
+                ArrayList<String> directions = new ArrayList<>(); // Temp Storage
+
+                String tempIngredient = cursor.getString(cursor.getColumnIndex(Recipe.KEY_ingredients));
+                String[] temp = tempIngredient.split("- "); //Split up ingredients to individual strings
+
+                for(int x=0; x < temp.length; x++) {
+                    ingredients.add(temp[x]);
+                }
+
+                String tempDirection = cursor.getString(cursor.getColumnIndex(Recipe.KEY_directions));
+                temp = tempDirection.split("- ");//split up directions into individual strings
+
+                for(int x=0; x < temp.length; x++) {
+                    directions.add(temp[x]);
+                }
+                //Get Values for Recipe Object
+                int rID = cursor.getInt(cursor.getColumnIndex(Recipe.KEY_rID));
+                String name = cursor.getString(cursor.getColumnIndex(Recipe.KEY_name));
+
+                String mealType = cursor.getString(cursor.getColumnIndex(Recipe.KEY_mealtype));
+                String mainIngredient = cursor.getString(cursor.getColumnIndex(Recipe.KEY_mainingredient));
+                int rating = cursor.getInt(cursor.getColumnIndex(Recipe.KEY_rating));
+                String description = cursor.getString(cursor.getColumnIndex(Recipe.KEY_description));
+                int cooktime = cursor.getInt(cursor.getColumnIndex(Recipe.KEY_cooktime));
+                String notes = cursor.getString(cursor.getColumnIndex(Recipe.KEY_notes));
+
+                //Create new Recipe from Row
+                Recipe tempRecipe = new Recipe(rID, name, description, mealType, mainIngredient,
+                        rating, cooktime, notes, ingredients, directions);
                 //Add the recipe to the ArrayList
                 result.add(tempRecipe);
 

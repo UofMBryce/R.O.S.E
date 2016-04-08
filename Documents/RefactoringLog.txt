@@ -1,0 +1,5 @@
+Refactoring Instance #1
+- Refactored Edit.java
+  - I performed some method extraction on the Edit class. the class originally consisted of two overly large methods. I broke those methods up 
+    into tasks that could be performed by other methods, and used a consistant naming system to help illustrate their functionality. The new 
+    code should now be easier to read as well as easier to change should the need arise. 

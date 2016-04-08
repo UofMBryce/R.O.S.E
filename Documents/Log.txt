@@ -464,3 +464,47 @@ Presentation
 Retrospective 
 	- completed -> will be used in postmortem discussion in seminar 
 	- summary writeup will be added to project 
+	
+
+3/30/2016
+---------------
+Group Meeting 
+	- Bryce, Chad, Kevin, Jiqing in attendance 
+		- Robben has doctor appointment 
+		
+Soft deadline of Monday, April 4th for all functionality 
+	- then Chad has all he needs for writing testing 
+
+Monday: Assign big user stories for robotium testing 
+
+Possibility of moving meeting rooms for Monday 
+
+Next Meeting on Monday
+
+4/4/2016
+------------
+Group Meeting 
+	- All in attendance 
+	
+All funcitonality should be done by Wednesday 
+	- waiting on AddRating and Delete 
+	
+- Will post list of big user stories on repo that need to be Robotium tested
+
+- Refactoring: going to focus on the Iter2 feedback first -> shortening some methods in edit and sort 
+
+Next meeting: Wednesday in the Science and Technologies library 
+
+4/6/2016
+------------
+Group Meeting 
+	- All in attendance 
+	
+	Robotium Tests 
+		- all tests listed as issues in repository 
+	Refactoring 
+		- Kevin will do write up on GUI refactoring 
+		- Bryce will refactor Edit class 
+		- Jiqing will refactor SortRecipes 
+		
+	Robben will double check application still runs on Nexus 7 device (not sure what APK device is running)

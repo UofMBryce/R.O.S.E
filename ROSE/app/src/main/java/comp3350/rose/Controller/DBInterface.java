@@ -11,4 +11,5 @@ public interface DBInterface {
     public void deleteRecipe(Recipe recipe);
     public void editRecipe(Recipe recipe);
     public ArrayList<Recipe> getList();
+    public ArrayList<Recipe> getList(String input);
 }

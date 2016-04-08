@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import comp3350.rose.model.Recipe;
+import comp3350.rose.model.ShoppingList;
 
 public class dbHelper extends SQLiteOpenHelper {
 
@@ -41,7 +42,8 @@ public class dbHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-        db.execSQL("DROP TABLE IF EXISTS recipes" );
+        db.execSQL("DROP TABLE IF EXISTS Recipes" );
+        db.execSQL("DROP TABLE IF EXISTS Menu" );
         onCreate(db);
     }
 }
