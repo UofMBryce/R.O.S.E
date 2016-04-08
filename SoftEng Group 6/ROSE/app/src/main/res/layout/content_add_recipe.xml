@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#e1dc4b88"
+    android:weightSum="1">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e1dc4b88"
+        android:weightSum="1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Enter Recipe Name:"
+        android:id="@+id/recipeName"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/recipeNameText"
+        android:background="#ccdd6b9b" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Enter Short Description:"
+        android:id="@+id/recipeDesc"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/recipeDescText"
+        android:background="#ccdd6b9b" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Enter Meal Type:"
+        android:id="@+id/recipeMealType"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/recipeMealTypeText"
+        android:background="#ccdd6b9b" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Ingredients"
+        android:id="@+id/addIngredients"
+        android:onClick="addIngredientsButton" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Instructions"
+        android:id="@+id/addInstructions"
+        android:onClick="addInstructionsButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Notes:"
+        android:id="@+id/recipeNotes"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/recipeNotesText"
+        android:lines="3"
+        android:background="#ccdd6b9b" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Rating:"
+        android:id="@+id/recipeRating"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
+
+    <RatingBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/recipeRatingBar"
+        android:background="#ccdd6b9b" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Recipe"
+        android:id="@+id/recipeSave"
+        android:onClick="SaveRecipeButton" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        android:id="@+id/recipeCancel"
+        android:onClick="CancelRecipesButton" />
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

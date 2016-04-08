@@ -1,95 +1,99 @@
 package comp3350.rose;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
+import android.app.ListActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.junit.*;
 
-import android.content.Context;
-import android.app.ListActivity;
-import android.util.Log;
+import comp3350.rose.Business.MyApplication;
+import comp3350.rose.Controller.DBInterface;
+import comp3350.rose.Presentation.Details;
+import comp3350.rose.Presentation.Edit;
+import comp3350.rose.Presentation.SortRecipes;
+import comp3350.rose.Presentation.init;
+import comp3350.rose.model.Recipe;
 
 import java.util.ArrayList;
 
-import comp3350.rose.Controller.DBInterface;
-import comp3350.rose.model.Recipe;
-import comp3350.rose.Stub.StubDB;
-import comp3350.rose.Database.RecipeDatabase;
-import comp3350.rose.Business.MyApplication;
-import comp3350.rose.Controller.DBInterface;
-import comp3350.rose.model.Recipe;
-import comp3350.rose.Stub.StubDB;
-
-import dalvik.annotation.TestTargetClass;
 import static org.junit.Assert.*;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
  */
-public class ROSEUnitTest {
-    static Context con;
-    static StubDB stub;
-    static ArrayList<Recipe> temp_recipes;
-    static ArrayList<String> temp_recipeDisplay;
-    static int temp_recipePosition;
-    static Recipe temp_Recipe;
-    static String temp_string;
-    static int temp_int;
+public class ROSEUnitTest extends ListActivity {
+
+    private static MyApplication myApp = (MyApplication)new init().getApplication();
+    private static DBInterface repository = myApp.getRepository(myApp);
+    private static ArrayList<Recipe> temp_recipes = repository.getList();
+
+    private static ListView RecipeListView;
+    private static Recipe temp_Recipe;
+    private static ListView DetailsListView;
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        con = MyApplication.getAppContext();
-        stub = StubDB.getInstance(con);
+        // Set Up Recipe ListView
+        ArrayList<String> recDisplay = new ArrayList<>();
 
+        for(int i=0; i<temp_recipes.size(); i++) {
+            recDisplay.add(temp_recipes.get(i).getName());
+        }
 
-        temp_recipes = stub.getList();
-        temp_recipeDisplay = new ArrayList<>();
+        ArrayAdapter<String> myArrayAdapter = new ArrayAdapter<>(new init(), android.R.layout.simple_list_item_1, recDisplay);
 
-        temp_recipePosition = 0;
+        //RecipeListView = new init().getListView();
+       // RecipeListView.setAdapter(myArrayAdapter);
 
+        // Set Up Recipe (First Recipe in List)
+        temp_Recipe = myApp.getSortedRecipes().get(1);
+
+        // Set Up Details ListView
+        ArrayList<String> recDetails = new ArrayList<>();
+
+        recDetails.add(temp_Recipe.getName());
+        recDetails.add(temp_Recipe.getDescription());
+        recDetails.add("Ingredients:");
+        for(int i=0; i<temp_Recipe.getIngredients().size(); i++){
+            recDetails.add(temp_Recipe.getIngredients().get(i));
+        }
+        recDetails.add("Instructions:");
+        for(int i=0; i<temp_Recipe.getDirections().size(); i++){
+            recDetails.add(temp_Recipe.getDirections().get(i));
+        }
+
+        myArrayAdapter = new ArrayAdapter<>(new Details(), android.R.layout.simple_list_item_1, recDetails);
+        DetailsListView = new Details().getListView();
+        DetailsListView.setAdapter(myArrayAdapter);
     }
 
-    @Test
-    protected void initTest(Bundle savedInstanceState) {
-        init start = new init();
-
-        ArrayList<Recipe> recipes = stub.getList();
-        ArrayList<String> recipeDisplay = new ArrayList<>();
-
-        assertEquals("Recipes were not loaded from the stub database correctly.", temp_recipes, recipes);
-        assertEquals("Resipe display list not loaded correctly.", temp_recipeDisplay, recipeDisplay);
-
-    }
+//    @Test
+//    protected void initTest() {
+//        init initializer = new init();
+//
+//        ListView initListView = initializer.lv;
+//
+//        assertEquals("Recipes were not loaded from the stub database to the ListView correctly.", initListView, RecipeListView);
+//
+//    }
 
     @Test
-    protected void DetailsTest(Bundle savedInstanceState) {
-        Details det = new Details();
+    protected void RecipeTest() {
+        String name = temp_Recipe.getName();
+        String mealType = temp_Recipe.getMealType();
+        String mainIngredient = temp_Recipe.getMainIngredient();
+        String description = temp_Recipe.getDescription();
+        String notes = temp_Recipe.getNotes();
 
-        Recipe clickedRecipe = ((MyApplication)det.getApplication()).getSortedRecipes().get(det.recipePosition);
-        ArrayList<String> recipeDetails = new ArrayList<>();
+        int rating = temp_Recipe.getRating();
+        int cooktime = temp_Recipe.getCooktime();
 
-        assertEquals("Clicked Recipe is not a valid Recipe.", temp_Recipe, clickedRecipe);
-        assertEquals("Recipe Details not in valid String ArrayList format.", temp_recipeDisplay, recipeDetails);
+        ArrayList<String> ingredients = temp_Recipe.getIngredients();
+        ArrayList<String> directions = temp_Recipe.getDirections();
 
-    }
-
-    @Test
-    protected void RecipeTest(Bundle savedInstanceState) {
-        Details det = new Details();
-        Recipe example = ((MyApplication)det.getApplication()).getSortedRecipes().get(det.recipePosition);
-
-        String name = example.getName();
-        String mealType = example.getMealType();
-        String mainIngredient = example.getMainIngredient();
-        int rating = example.getRating();
-        String description = example.getDescription();
-        ArrayList<String> ingredients = example.getIngredients();
-        ArrayList<String> directions = example.getDirections();
-        int cooktime = example.getCooktime();
-        String notes = example.getNotes();
+        String temp_string = "";
+        int temp_int = 0;
+        ArrayList<String> temp_recipeDisplayList = new ArrayList<>();
 
         assertEquals("Name is not a valid String.", name, temp_string);
         assertEquals("Meal Type is not a valid String.", mealType, temp_string);
@@ -100,30 +104,72 @@ public class ROSEUnitTest {
         assertEquals("Rating is not a valid integer.", rating, temp_int);
         assertEquals("Cook Time is not a valid integer.", cooktime, temp_int);
 
-        assertEquals("Ingredients is not a valid ArrayList.", ingredients, temp_recipeDisplay);
-        assertEquals("Directions is not a valid ArrayList.", directions, temp_recipeDisplay);
-
+        assertEquals("Ingredients is not a valid ArrayList.", ingredients, temp_recipeDisplayList);
+        assertEquals("Directions is not a valid ArrayList.", directions, temp_recipeDisplayList);
     }
 
-    @Test
-    protected void ShoppingListTest(Bundle savedInstanceState) {
-        ShoppingList list = new ShoppingList();
-        ArrayList<String> shoppingDisplay = new ArrayList<>();
-
-        assertEquals("Shopping List display list not loaded correctly.", temp_recipeDisplay, shoppingDisplay);
-
-    }
-
-    @Test
-    protected void EditTest(Bundle savedInstanceState) {
-        Edit changer = new Edit();
-
-        Recipe recipeToModify = changer.recipeToModify;
-
-        assertEquals("Chosen Recipe is not a valid Recipe.", temp_Recipe, recipeToModify);
-
-
-    }
+//    @Test
+//    protected void DetailsTest() {
+//        Details dets = new Details();
+//
+//        ListView detListView = dets.lv;
+//        int detRecipePos = dets.recipePosition;
+//
+//        int temp_Pos = 0;
+//
+//        assertEquals("Clicked Recipe Position is not a valid Recipe Position.", detRecipePos, temp_Pos);
+//        assertEquals("Recipe Details were not loaded from the Recipe to the ListView correctly.", detListView, DetailsListView);
+//
+//    }
+//
+//    @Test
+//    protected void EditTest() {
+//        Edit changer = new Edit();
+//
+//        int recPos = changer.recipePosition;
+//        int EType = changer.editType;
+//        int recID = changer.rID;
+//
+//        Recipe rec2Mod = changer.recipeToModify;
+//
+//        int changePos = changer.changePosition;
+//        int ingrSID = changer.ingredSID;
+//        int instSID = changer.instruSID;
+//
+//        int temp_int = 0;
+//
+//        assertEquals("Recipe Position is not a valid Recipe in the Database.", recPos, temp_int);
+//        assertEquals("Edit operation is not a valid operation.", EType, temp_int);
+//        assertEquals("Recipe ID is not a valid recipe ID.", recID, temp_int);
+//        assertEquals("Clicked Recipe is not a valid Recipe.", rec2Mod, temp_Recipe);
+//        assertEquals("Change Position is not a valid Position.", changePos, temp_int);
+//        assertEquals("Ingredient ID is not a valid ingredient ID.", ingrSID, temp_int);
+//        assertEquals("Instruction ID is not a valid instruction ID.", instSID, temp_int);
+//
+//    }
+//
+//    @Test
+//    protected void ShoppingListTest() {
+//
+//        // No Variables to test
+//
+//    }
+//
+//    @Test
+//    protected void SortRecipesTest() {
+//        SortRecipes sort = new SortRecipes();
+//
+//        int mealPos = sort.mealTypePos;
+//        int sortPos = sort.sortTypePos;
+//        int ingredPos = sort.mainIngredientPos;
+//
+//        int temp_int = 0;
+//
+//        assertEquals("Meal Type Position is not a valid Position.", mealPos, temp_int);
+//        assertEquals("Sort Type Position is not a valid Position.", sortPos, temp_int);
+//        assertEquals("Main Ingredient Position is not a valid Position.", ingredPos, temp_int);
+//
+//    }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
@@ -131,4 +177,3 @@ public class ROSEUnitTest {
     }
 
 }
-

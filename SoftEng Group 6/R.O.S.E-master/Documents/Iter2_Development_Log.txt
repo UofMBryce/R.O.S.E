@@ -1,0 +1,26 @@
+-----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------        Iteration 2        -------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+3/3/2016 - 2 hours | research (spike) - Bryce
+3/4/2016 - 3 hours | research (spike) - Bryce
+3/5/2016 - 2 hours | research (spike) - Bryce
+3/7/2016 - 4 hours | modified stubDB, created Database Interface, and began organizing code into packages - Bryce
+3/9/2016 - 3 hours | created Database and database helper class - Bryce
+3/10/2016 - 6 hours | created MyApplication class, finished integrating Database code into project, quick functionality tests - Bryce
+3/10/2016 - 2 hours | created comparators and started setting up sortRecipes class - Kevin
+3/11/2016 - 4 hours | Wrote backend code for sorting and seperating recipes - Kevin
+3/12/2016 - 2 hours | Wrote gui code for sorting and connected it with backend code - Kevin
+3/12/2016 - 3 hours| worked on shopping list database - Jiqing
+3/13/2016 - 2 hours| worked on edit/add shopping list -Jiqing
+3/13/2016 - 3 hours| research testing issues - Chad
+3/14/2016 - 4 hours| worked on testing code and issues - Chad
+3/14/2016 - 3 hours | Add/Delete Recipe coding (still working on) - Robben
+-----------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------        Iteration 3        -------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------
+3/26/2016 - 2 hours | Made a title page to help ease navigation - Kevin
+3/27/2016 - 3 hours | Refactored layouts for improved usability - Kevin
+3/27/2016 - 12 hours | Add Recipe functionality - Robben
+3/28/2016 - 2 hours | Fixed some integration issues and a partial editRecipe bug fix - Kevin
+3/30/2016 - 4 hours | Implemented Menu feature- Bryce 
+3/31/2016 - 3 hours | continued implementing menu feature, tweaked UI, refactored a couple long methods - Bryce

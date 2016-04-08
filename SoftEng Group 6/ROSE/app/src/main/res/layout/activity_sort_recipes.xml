@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="comp3350.rose.SortRecipes"
+    android:background="#d6f83976">
+
+    <TextView
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Meal Type:"
+        android:id="@+id/mealType"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
+
+    <Spinner
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:id="@+id/mealtypespinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c6f26793" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Main Ingredient:"
+        android:id="@+id/mainIngredient"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
+
+    <Spinner
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:id="@+id/ingredientspinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c6f26793" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Sort By:"
+        android:id="@+id/sortBy"
+        android:textStyle="bold"
+        android:textColor="#ede2e2" />
+
+    <Spinner
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:id="@+id/sortspinner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#c6f26793" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="FIND RECIPES"
+        android:id="@+id/button4"
+        android:layout_marginBottom="58dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="findRecipesButton"/>
+
+
+</LinearLayout>

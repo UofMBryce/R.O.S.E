@@ -1,35 +1,26 @@
 package comp3350.rose;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 import org.junit.*;
 
 import android.content.Context;
 import android.app.ListActivity;
-import android.util.Log;
 
 import java.util.ArrayList;
 
-import comp3350.rose.Controller.DBInterface;
+import comp3350.rose.Presentation.init;
 import comp3350.rose.model.Recipe;
 import comp3350.rose.Stub.StubDB;
 import comp3350.rose.Database.RecipeDatabase;
 import comp3350.rose.Business.MyApplication;
-import comp3350.rose.Controller.DBInterface;
-import comp3350.rose.model.Recipe;
-import comp3350.rose.Stub.StubDB;
 
-import dalvik.annotation.TestTargetClass;
 import static org.junit.Assert.*;
 
 /**
  * To work on Integration tests, switch the Test Artifact in the Build Variants view.
  */
-public class ROSEIntegrationTest {
+
+public class ROSEIntegrationTest extends ListActivity {
+    static MyApplication myApp = (MyApplication)new init().getApplication();
     static Context con;
     static StubDB stub;
     static RecipeDatabase db;
@@ -38,19 +29,24 @@ public class ROSEIntegrationTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        con = MyApplication.getAppContext();
-        stub = StubDB.getInstance(con);
+        con = myApp.getBaseContext();
 
+        // Get Stub Database
+        stub = StubDB.getInstance(con);
+        // Get Database
         db = RecipeDatabase.getInstance(con);
 
+        // Get ArrayList of Recipes from Regular and Stub Databases
         dataB = db.getList();
         stubby = stub.getList();
     }
 
     @Test
-    protected void IntegrationTest(Bundle savedInstanceState) {
+    protected void IntegrationTest() {
 
-        assertEquals("Recipes loaded from Database are not the same as those loaded from Stub.", dataB, stubby);
+        for(int i=0; i<dataB.size(); i++) {
+            assertSame("A Recipe loaded from the Database is not the same as a Recipe loaded from the Stub.", dataB.get(i), stubby.get(i));
+        }
 
     }
 
@@ -58,6 +54,5 @@ public class ROSEIntegrationTest {
     public static void tearDownClass() throws Exception {
         // No Cleanup Necessary
     }
-
 
 }
