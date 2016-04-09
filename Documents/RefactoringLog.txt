@@ -1,5 +1,7 @@
 Refactoring Instance #1
 - Refactored Edit.java
-  - I performed some method extraction on the Edit class. the class originally consisted of two overly large methods. I broke those methods up 
-    into tasks that could be performed by other methods, and used a consistant naming system to help illustrate their functionality. The new 
-    code should now be easier to read as well as easier to change should the need arise. 
+  - I performed some method extraction on the Edit class. the class originally consisted of two overly large methods. I broke those methods up into tasks that could be performed by other methods, and used a consistant naming system to help illustrate their functionality. The new code should now be easier to read as well as easier to change should the need arise. 
+    
+Refactoring Instance #2
+- Refactored GUI layouts and added title page
+  - Added a title page to ease navigation and refactored layouts to provide a more intuitive interface. Previously the application loaded directly into the view recipes activity and the buttons to navigate between the activitys were confusing to new users. The new title page and GUI layout improvements provide a much more intuitive and easy to use interface for users.
