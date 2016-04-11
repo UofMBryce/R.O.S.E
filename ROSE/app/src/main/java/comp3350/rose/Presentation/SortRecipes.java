@@ -85,6 +85,49 @@ public class SortRecipes extends AppCompatActivity {
         });
     }
 
+    private ArrayList<Recipe> getMealTypeList(ArrayList<Recipe> allRecipes, String mealType)
+    {
+        ArrayList<Recipe> mealTypeList = new ArrayList<>();
+
+        for(int i=0; i<allRecipes.size(); i++){
+            if(allRecipes.get(i).getMealType().equals(mealType)){
+                mealTypeList.add(allRecipes.get(i));
+            }
+        }
+
+        return mealTypeList;
+    }
+
+    private ArrayList<Recipe> getMainIngredientList(ArrayList<Recipe> allRecipes, String mainIngredient)
+    {
+        ArrayList<Recipe> mainIngredientList = new ArrayList<>();
+
+        for(int i=0; i<allRecipes.size(); i++){
+            if(allRecipes.get(i).getMainIngredient() != null){
+                if(allRecipes.get(i).getMainIngredient().equals(mainIngredient)){
+                    mainIngredientList.add(allRecipes.get(i));
+                }
+            }
+        }
+
+        return mainIngredientList;
+    }
+
+    private ArrayList<Recipe> getSortedList(ArrayList<Recipe> mealTypeList, ArrayList<Recipe> mainIngredientList)
+    {
+        ArrayList<Recipe> sortedList = new ArrayList<>();
+
+        for(int i=0; i<mealTypeList.size(); i++){
+            for (int j=0; j<mainIngredientList.size(); j++){
+                if(mealTypeList.get(i).getrID() == mainIngredientList.get(j).getrID()){
+                    sortedList.add(mealTypeList.get(i));
+                }
+            }
+        }
+
+        return sortedList;
+    }
+
     public void findRecipesButton(View view){
         ArrayList<Recipe> mainIngredientList = new ArrayList<>();
         ArrayList<Recipe> mealTypeList = new ArrayList<>();
@@ -98,25 +141,13 @@ public class SortRecipes extends AppCompatActivity {
             mealTypeList = allRecipes;
         }
         if(mealTypePos == 1){  // Breakfast Meal Type
-            for(int i=0; i<allRecipes.size(); i++){
-                if(allRecipes.get(i).getMealType().equals("Breakfast")){
-                    mealTypeList.add(allRecipes.get(i));
-                }
-            }
+            mealTypeList = getMealTypeList(allRecipes, "Breakfast");
         }
         if(mealTypePos == 2){  // Lunch Meal Type
-            for(int i=0; i<allRecipes.size(); i++){
-                if(allRecipes.get(i).getMealType().equals("Lunch")){
-                    mealTypeList.add(allRecipes.get(i));
-                }
-            }
+            mealTypeList = getMealTypeList(allRecipes, "Lunch");
         }
         if(mealTypePos == 3){  // Supper Meal Type
-            for(int i=0; i<allRecipes.size(); i++){
-                if(allRecipes.get(i).getMealType().equals("Supper")){
-                    mealTypeList.add(allRecipes.get(i));
-                }
-            }
+            mealTypeList = getMealTypeList(allRecipes, "Supper");
         }
         //------------------------------------End of Meal Type--------------------------------------
 
@@ -125,51 +156,21 @@ public class SortRecipes extends AppCompatActivity {
             mainIngredientList = allRecipes;
         }
         if(mainIngredientPos == 1){  // Chicken
-            for(int i=0; i<allRecipes.size(); i++){
-                if(allRecipes.get(i).getMainIngredient() != null){
-                    if(allRecipes.get(i).getMainIngredient().equals("Chicken")){
-                        mainIngredientList.add(allRecipes.get(i));
-                    }
-                }
-            }
+            mainIngredientList = getMainIngredientList(allRecipes, "Chicken");
         }
         if(mainIngredientPos == 2){  // Beef
-            for(int i=0; i<allRecipes.size(); i++){
-                if(allRecipes.get(i).getMainIngredient() != null){
-                    if(allRecipes.get(i).getMainIngredient().equals("Beef")){
-                        mainIngredientList.add(allRecipes.get(i));
-                    }
-                }
-            }
+            mainIngredientList = getMainIngredientList(allRecipes, "Beef");
         }
         if(mainIngredientPos == 3){  // Turkey
-            for(int i=0; i<allRecipes.size(); i++){
-                if(allRecipes.get(i).getMainIngredient() != null){
-                    if(allRecipes.get(i).getMainIngredient().equals("Turkey")){
-                        mainIngredientList.add(allRecipes.get(i));
-                    }
-                }
-            }
+            mainIngredientList = getMainIngredientList(allRecipes, "Turkey");
         }
         if(mainIngredientPos == 4){  // Pork
-            for(int i=0; i<allRecipes.size(); i++){
-                if(allRecipes.get(i).getMainIngredient() != null){
-                    if(allRecipes.get(i).getMainIngredient().equals("Pork")){
-                        mainIngredientList.add(allRecipes.get(i));
-                    }
-                }
-            }
+            mainIngredientList = getMainIngredientList(allRecipes, "Pork");
         }
         //------------------------------End of Main Ingredient--------------------------------------
 
         //sortedList contains only recipes in both mealType and mainIngredient lists
-        for(int i=0; i<mealTypeList.size(); i++){
-            for (int j=0; j<mainIngredientList.size(); j++){
-                if(mealTypeList.get(i).getrID() == mainIngredientList.get(j).getrID()){
-                    sortedList.add(mealTypeList.get(i));
-                }
-            }
-        }
+        sortedList = getSortedList(mealTypeList, mainIngredientList);
 
         //----------------------------------Sort Type-----------------------------------------------
         if(sortTypePos == 0){ //DEFAULT
